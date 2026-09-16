@@ -1,0 +1,71 @@
+// Editor styles for the SuperQuest block.
+
+.superquest-quest {
+
+	.superquest-placeholder {
+		border-radius: 10px;
+		border: 1px solid #1f2937;
+		background: #111827;
+		color: #e5e7eb;
+
+		.components-placeholder__label {
+			color: #e5e7eb;
+			font-weight: 600;
+
+			svg {
+				fill: #22d3ee;
+			}
+		}
+
+		.components-placeholder__fieldset {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 12px;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.components-notice {
+			margin: 0;
+			width: 100%;
+		}
+
+		.components-external-link {
+			color: #67e8f9;
+		}
+	}
+
+	.superquest-placeholder__title {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: #fff;
+	}
+
+	.superquest-placeholder__picker {
+		width: 100%;
+		max-width: 420px;
+
+		.components-base-control__label {
+			color: #e5e7eb;
+		}
+	}
+
+	.superquest-placeholder__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 12px;
+		margin-top: 8px;
+	}
+}
+
+.superquest-inspector__field {
+	margin-bottom: 16px;
+}
+
+.superquest-inspector__meta {
+	color: #757575;
+	font-size: 12px;
+}

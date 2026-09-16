@@ -1,0 +1,447 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SuperQuest 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/superquest\n"
+"POT-Creation-Date: 2026-09-16T08:07:49+00:00\n"
+"PO-Revision-Date: 2026-06-18 10:57+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.5; wp-7.0; php-8.2.31\n"
+
+#. Plugin Name of the plugin
+#: superquest.php includes/Admin/Menu.php:90 includes/Admin/Menu.php:91
+#: build/quest/index.js:1 build/quest/index.js:3
+msgid "SuperQuest"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: superquest.php
+msgid "https://jco.fi"
+msgstr ""
+
+#. Description of the plugin
+#: superquest.php
+msgid ""
+"Embed SuperQuest quests, quizzes and polls in your content with a block or "
+"as a site-wide popup."
+msgstr ""
+
+#. Author of the plugin
+#: superquest.php
+msgid "J&Co Digital Oy"
+msgstr ""
+
+#: includes/Admin/Menu.php:101
+msgid "SuperQuest settings"
+msgstr ""
+
+#: includes/Admin/Menu.php:102
+msgid "General"
+msgstr "Yleiset"
+
+#: includes/Admin/Menu.php:110
+msgid "SuperQuest popup"
+msgstr ""
+
+#: includes/Admin/Menu.php:111 views/admin/popup.php:18
+#: views/admin/usage.php:33
+msgid "Popup"
+msgstr "Ponnahdusikkuna"
+
+#: includes/Admin/Menu.php:119
+msgid "SuperQuest usage"
+msgstr ""
+
+#: includes/Admin/Menu.php:120 views/admin/usage.php:21
+msgid "Usage"
+msgstr ""
+
+#: includes/Admin/Menu.php:136
+msgid "Organisation"
+msgstr ""
+
+#: includes/Admin/Menu.php:143
+msgid "Organisation ID"
+msgstr "Organisaation ID"
+
+#: includes/Admin/Menu.php:152
+msgid "Loader"
+msgstr ""
+
+#: includes/Admin/Menu.php:159
+msgid "Always load"
+msgstr ""
+
+#: includes/Admin/Menu.php:167
+msgid "Cookie consent"
+msgstr ""
+
+#: includes/Admin/Menu.php:175
+msgid "Popup quests"
+msgstr ""
+
+#: includes/Admin/Menu.php:182
+msgid "Excluded pages"
+msgstr ""
+
+#: includes/Admin/Menu.php:191 includes/Admin/Usage_Table.php:49
+msgid "Quests"
+msgstr ""
+
+#: includes/Admin/Menu.php:252
+msgid ""
+"The organisation whose quests can be inserted. You find the ID in the "
+"SuperQuest dashboard."
+msgstr ""
+
+#: includes/Admin/Menu.php:266
+msgid "Saving a new ID fetches the organisation's quests right away."
+msgstr ""
+
+#: includes/Admin/Menu.php:275
+msgid ""
+"The SuperQuest loader is a small script from files.jquest.fi that renders "
+"quests. It is added to pages that hold a quest block or a popup quest."
+msgstr ""
+
+#: includes/Admin/Menu.php:287
+msgid "Load the SuperQuest loader on every page"
+msgstr ""
+
+#: includes/Admin/Menu.php:288
+msgid ""
+"Use this when quests are inserted by other means than the block or the "
+"popup, for example from a theme template."
+msgstr ""
+
+#: includes/Admin/Menu.php:301
+msgid "Load SuperQuest before cookie consent is given"
+msgstr ""
+
+#: includes/Admin/Menu.php:302
+msgid ""
+"Marks the loader as essential for Cookiebot, OneTrust and CookieYes so "
+"quests work before the visitor answers the consent banner. Only enable this "
+"if your privacy assessment allows it."
+msgstr ""
+
+#: includes/Admin/Menu.php:312
+msgid ""
+"Every enabled quest below is inserted at the top of the footer on every page "
+"of the site, apart from the excluded pages."
+msgstr ""
+
+#: includes/Admin/Menu.php:360
+msgid "You are not allowed to refresh the quest list."
+msgstr ""
+
+#: includes/Admin/Menu.php:393
+msgid "Quest list refreshed."
+msgstr ""
+
+#. translators: %s: error message.
+#: includes/Admin/Menu.php:404
+#, php-format
+msgid "Could not refresh the quest list: %s"
+msgstr ""
+
+#: includes/Admin/Quests_Table.php:46
+msgid "Title"
+msgstr "Otsikko"
+
+#: includes/Admin/Quests_Table.php:47
+msgid "Quest ID"
+msgstr ""
+
+#: includes/Admin/Quests_Table.php:64 includes/Admin/Usage_Table.php:85
+#: includes/Admin/Usage_Table.php:106
+msgid "(no title)"
+msgstr ""
+
+#. translators: %s: human-readable time difference, e.g. "5 minutes".
+#: includes/Admin/Quests_Table.php:91
+#, php-format
+msgid "Last fetched %s ago."
+msgstr ""
+
+#: includes/Admin/Quests_Table.php:107
+msgid "No quests fetched yet. Save an Organisation ID or refresh the list."
+msgstr ""
+
+#: includes/Admin/Usage_Table.php:46
+msgid "Where"
+msgstr ""
+
+#: includes/Admin/Usage_Table.php:47
+msgid "ID"
+msgstr ""
+
+#: includes/Admin/Usage_Table.php:48
+msgid "Type"
+msgstr ""
+
+#: includes/Admin/Usage_Table.php:99
+msgid "View"
+msgstr ""
+
+#: includes/Admin/Usage_Table.php:114
+msgid "Used on:"
+msgstr ""
+
+#: includes/Admin/Usage_Table.php:133
+msgid "No quest selected"
+msgstr ""
+
+#: includes/Admin/Usage_Table.php:155
+msgid "Synced pattern"
+msgstr ""
+
+#: includes/Admin/Usage_Table.php:171
+msgid "No SuperQuest blocks found."
+msgstr ""
+
+#: includes/Plugin.php:80 views/admin/general.php:22
+msgid "Settings"
+msgstr ""
+
+#: includes/Quests.php:93
+msgid "Set an Organisation ID before fetching quests."
+msgstr ""
+
+#: includes/Quests.php:101
+msgid "The quest list was refreshed a moment ago. Try again shortly."
+msgstr ""
+
+#: includes/Quests.php:126
+msgid "Could not reach the SuperQuest API."
+msgstr ""
+
+#: includes/Quests.php:133 includes/Quests.php:137
+msgid "The SuperQuest API returned an unexpected response."
+msgstr ""
+
+#: includes/Quests.php:149
+msgid "The SuperQuest API rejected the request."
+msgstr ""
+
+#: includes/Rest/Quests_Controller.php:146
+msgid "The configured SuperQuest organisation ID."
+msgstr ""
+
+#: includes/Rest/Quests_Controller.php:151
+msgid "The quests available to the organisation."
+msgstr ""
+
+#: includes/Rest/Quests_Controller.php:163
+msgid "Message returned by the SuperQuest API with the last fetch."
+msgstr ""
+
+#: includes/Rest/Quests_Controller.php:168
+msgid "Unix timestamp of the last fetch, 0 when never fetched."
+msgstr ""
+
+#: includes/Rest/Quests_Controller.php:173
+msgid "Whether the current user can change the plugin settings."
+msgstr ""
+
+#: includes/Rest/Quests_Controller.php:178
+msgid "URL of the settings screen, empty when the user cannot manage settings."
+msgstr ""
+
+#: views/admin/general.php:39
+msgid "Organisation quests"
+msgstr ""
+
+#: views/admin/general.php:44 build/quest/index.js:2
+msgid "Refresh quests"
+msgstr ""
+
+#: views/admin/popup-excluded-field.php:23
+msgid "Page or post IDs no popup quest is inserted on, separated by commas."
+msgstr ""
+
+#: views/admin/popup-excluded-field.php:34
+msgid "not found"
+msgstr ""
+
+#: views/admin/popup-quests-field.php:32
+msgid ""
+"No quests are available yet. Set an Organisation ID on the General screen "
+"first."
+msgstr ""
+
+#: views/admin/popup-quests-field.php:47
+msgid "Add a quest"
+msgstr ""
+
+#. translators: %d: position of the quest in the list.
+#: views/admin/popup-quests-field.php:50
+#, php-format
+msgid "Quest %d"
+msgstr ""
+
+#: views/admin/popup-quests-field.php:56 build/quest/index.js:2
+msgid "Quest"
+msgstr ""
+
+#: views/admin/popup-quests-field.php:58
+msgid "— Select a quest —"
+msgstr ""
+
+#: views/admin/popup-quests-field.php:73
+msgid ""
+"This quest is no longer in the fetched quest list. Pick another one or "
+"remove the entry."
+msgstr ""
+
+#: views/admin/popup-quests-field.php:80
+msgid "Insert this quest above the footer"
+msgstr ""
+
+#: views/admin/popup-quests-field.php:88
+msgid "Remove this quest when saving"
+msgstr ""
+
+#: views/admin/usage.php:26
+msgid ""
+"Every page, post, template and synced pattern whose content holds a "
+"SuperQuest block. The list is read from the database each time this screen "
+"opens."
+msgstr ""
+
+#. translators: %s: link to the Popup screen.
+#: views/admin/usage.php:32
+#, php-format
+msgid ""
+"Popup quests are not listed: they are inserted site-wide and configured on "
+"the %s screen."
+msgstr ""
+
+#: build/quest/index.js:1
+msgid "The request failed."
+msgstr ""
+
+#: build/quest/index.js:1
+msgid "Customer satisfaction quiz"
+msgstr ""
+
+#. translators: %d: number of quests.
+#: build/quest/index.js:2
+msgid "Quest list refreshed: %d quests."
+msgstr ""
+
+#: build/quest/index.js:2
+msgid "Refreshing quests…"
+msgstr ""
+
+#: build/quest/index.js:2
+msgid "Search quests…"
+msgstr ""
+
+#: build/quest/index.js:2
+msgid "Cancel"
+msgstr ""
+
+#: build/quest/index.js:2
+msgid ""
+"This quest is no longer in the fetched quest list. Pick another one or "
+"refresh the list."
+msgstr ""
+
+#: build/quest/index.js:2
+msgid "Change quest"
+msgstr ""
+
+#: build/quest/index.js:2 build/quest/index.js:3
+msgid "Edit in SuperQuest dashboard"
+msgstr ""
+
+#: build/quest/index.js:2
+msgid "No quests were found for the organisation."
+msgstr ""
+
+#: build/quest/index.js:2
+msgid "No SuperQuest organisation is set for this site."
+msgstr ""
+
+#: build/quest/index.js:2
+msgid "Open SuperQuest settings"
+msgstr ""
+
+#: build/quest/index.js:2
+msgid ""
+"Ask an administrator to set the Organisation ID in the SuperQuest settings."
+msgstr ""
+
+#. translators: %s: human-readable time difference, e.g. "5 minutes ago".
+#: build/quest/index.js:3
+msgid "Quest list fetched %s."
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block title"
+msgid "SuperQuest"
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block description"
+msgid "Insert a SuperQuest quest, quiz or poll."
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block keyword"
+msgid "quest"
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block keyword"
+msgid "quiz"
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block keyword"
+msgid "gamification"
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block keyword"
+msgid "learning"
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block keyword"
+msgid "poll"
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block keyword"
+msgid "survey"
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block keyword"
+msgid "rating"
+msgstr ""
+
+#: build/quest/block.json
+msgctxt "block keyword"
+msgid "game"
+msgstr ""
+
+#~ msgid "Enabled"
+#~ msgstr "Käytössä"

@@ -1,0 +1,27 @@
+# Files and directories excluded from the WordPress.org distribution.
+.git
+.github
+.gitignore
+.gitattributes
+.distignore
+.editorconfig
+.prettierrc
+.wp
+.wordpress-org
+.DS_Store
+Thumbs.db
+*~
+src
+node_modules
+vendor
+composer.json
+composer.lock
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+phpcs.xml.dist
+languages/*.po
+languages/*.mo
+languages/*.json
+README.md
+*.zip

@@ -1,0 +1,47 @@
+{
+  "name": "superquest",
+  "version": "1.0.0",
+  "description": "Embed SuperQuest quests, quizzes and polls in WordPress.",
+  "author": "J&Co Digital Oy <support@jco.fi>",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "files": [
+    "superquest.php",
+    "uninstall.php",
+    "readme.txt",
+    "LICENSE",
+    "includes/**",
+    "views/**",
+    "assets/**",
+    "build/**",
+    "languages/superquest.pot"
+  ],
+  "scripts": {
+    "build": "wp-scripts build --webpack-copy-php",
+    "start": "wp-scripts start --webpack-copy-php",
+    "lint:js": "wp-scripts lint-js src",
+    "lint:css": "wp-scripts lint-style 'src/**/*.scss' 'assets/**/*.css'",
+    "format": "wp-scripts format src",
+    "lint:php": "composer lint",
+    "check": "pnpm lint:js && pnpm lint:css && pnpm lint:php",
+    "make-pot": "wp i18n make-pot . languages/superquest.pot --domain=superquest --slug=superquest --exclude=vendor,node_modules,src,.wp,.wordpress-org",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "playground": "wp-playground-cli server --blueprint=.wp/blueprint.json --mount=.:/wordpress/wp-content/plugins/superquest --php=8.2 --port=8881"
+  },
+  "devDependencies": {
+    "@wordpress/api-fetch": "^7.55.0",
+    "@wordpress/block-editor": "^17.1.0",
+    "@wordpress/blocks": "^16.0.0",
+    "@wordpress/components": "^40.1.0",
+    "@wordpress/data": "^10.55.0",
+    "@wordpress/date": "^5.55.0",
+    "@wordpress/element": "^8.7.0",
+    "@wordpress/i18n": "^6.28.0",
+    "@wordpress/icons": "^14.0.0",
+    "@wordpress/notices": "^5.55.0",
+    "@wordpress/primitives": "^4.55.0",
+    "@wordpress/scripts": "^35.0.0",
+    "@wp-playground/cli": "^3.1.54"
+  },
+  "packageManager": "pnpm@11.8.0"
+}

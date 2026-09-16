@@ -1,0 +1,77 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/wp-admin/admin.php?page=superquest",
+  "preferredVersions": {
+    "php": "8.2",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_DEBUG": true,
+        "WP_DEBUG_DISPLAY": true,
+        "WP_DEBUG_LOG": true,
+        "SCRIPT_DEBUG": true
+      }
+    },
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "plugin-check"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "superquest/superquest.php"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp option update superquest_organization_id superquest-test-org"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp option get superquest_quests --format=json"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post create --post_type=page --post_status=publish --post_title='Quest page' --post_name=quest-page --post_content='<!-- wp:paragraph --><p>Hello</p><!-- /wp:paragraph --><!-- wp:superquest/quest {\"questId\":\"quest-123\"} /-->' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post create --post_type=page --post_status=publish --post_title='Plain page' --post_name=plain-page --post_content='<!-- wp:paragraph --><p>Nothing here</p><!-- /wp:paragraph -->' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post create --post_type=page --post_status=publish --post_title='Excluded page' --post_name=excluded-page --post_content='<!-- wp:paragraph --><p>No popups</p><!-- /wp:paragraph -->' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post create --post_type=wp_block --post_status=publish --post_title='Quest pattern' --post_content='<!-- wp:superquest/quest {\"questId\":\"pattern-quest\"} /-->' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp option update superquest_popup_quests '[{\"quest_id\":\"popup-1\",\"enabled\":true},{\"quest_id\":\"popup-2\",\"enabled\":false}]' --format=json"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp option list --search='superquest_*' --format=json"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp eval 'update_option( \"superquest_popup_excluded_ids\", array( get_page_by_path( \"excluded-page\" )->ID ) ); echo \"excluded=\" . get_page_by_path( \"excluded-page\" )->ID . PHP_EOL;'"
+    }
+  ]
+}

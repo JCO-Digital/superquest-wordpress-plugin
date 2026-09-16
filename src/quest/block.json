@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "superquest/quest",
+	"version": "1.0.0",
+	"title": "SuperQuest",
+	"category": "embed",
+	"description": "Insert a SuperQuest quest, quiz or poll.",
+	"keywords": [
+		"quest",
+		"quiz",
+		"gamification",
+		"learning",
+		"poll",
+		"survey",
+		"rating",
+		"game"
+	],
+	"textdomain": "superquest",
+	"attributes": {
+		"questId": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"example": {
+		"attributes": {
+			"questId": "__example__"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"render": "file:./render.php"
+}

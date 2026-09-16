@@ -1,0 +1,155 @@
+/* SuperQuest admin screens. */
+
+.superquest-wrap {
+	max-width: 960px;
+}
+
+/* Page header. The wordmark is white and cyan, so the bar stays dark. */
+.superquest-wrap .superquest-page-header {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px 18px;
+	margin: 20px 0 8px;
+	padding: 14px 20px;
+	border-radius: 10px;
+	background: #111827;
+}
+
+.superquest-wrap .superquest-page-header h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.3rem;
+	font-weight: 500;
+	color: #e5e7eb;
+}
+
+.superquest-wrap .superquest-logo {
+	display: block;
+	flex-shrink: 0;
+	width: 190px;
+	height: 44px;
+	background: url(../img/superquest.svg) no-repeat left center / contain;
+}
+
+/* Cards. */
+.superquest-card {
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	padding: 20px 28px 24px;
+	margin-top: 20px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.superquest-card > h2:first-child,
+.superquest-card .superquest-card-header h2 {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1a2e40;
+}
+
+.superquest-card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin-bottom: 12px;
+}
+
+.superquest-card-header form {
+	margin: 0;
+}
+
+.superquest-card .form-table th {
+	width: 220px;
+}
+
+.superquest-card .submit {
+	padding-bottom: 0;
+}
+
+/* Quest table meta. */
+.superquest-quests-meta {
+	color: #64748b;
+	font-size: 0.85rem;
+	line-height: 30px;
+}
+
+.superquest-api-message {
+	color: #92400e;
+}
+
+/* Usage table. */
+.superquest-badge {
+	display: inline-block;
+	margin-left: 4px;
+	padding: 1px 6px;
+	border-radius: 4px;
+	font-size: 0.72rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+.superquest-badge--status {
+	background: #f1f5f9;
+	color: #64748b;
+}
+
+.superquest-usage-hosts {
+	margin-top: 4px;
+	color: #6b7280;
+	font-size: 0.8rem;
+	line-height: 1.6;
+}
+
+/* Excluded pages list. */
+.superquest-excluded-list {
+	margin: 4px 0 0;
+	color: #6b7280;
+	font-size: 0.8rem;
+	line-height: 1.6;
+}
+
+.superquest-excluded-list li {
+	margin: 0;
+}
+
+/* Popup quest entries. */
+.superquest-quest-entry {
+	margin: 0 0 12px;
+	padding: 4px 16px 8px;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	background: #fbfbfc;
+}
+
+.superquest-quest-entry--new {
+	border-style: dashed;
+	background: transparent;
+}
+
+.superquest-quest-entry legend {
+	padding: 0 6px;
+	color: #1a2e40;
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+}
+
+.superquest-quest-entry p {
+	margin: 8px 0;
+}
+
+.superquest-quest-entry select {
+	min-width: 280px;
+	max-width: 100%;
+}
+
+.superquest-warning {
+	color: #92400e;
+}

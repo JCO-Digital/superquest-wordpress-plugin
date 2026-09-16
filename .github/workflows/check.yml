@@ -1,0 +1,51 @@
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: Lint, build and Plugin Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          tools: composer
+          coverage: none
+
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          composer install --no-interaction --prefer-dist
+
+      - name: Lint PHP
+        run: composer lint
+
+      - name: Lint JavaScript and styles
+        run: |
+          pnpm lint:js
+          pnpm lint:css
+
+      - name: Build blocks
+        run: pnpm build
+
+      # Check what actually ships: the tree minus everything in .distignore.
+      - name: Assemble distribution
+        run: rsync -a --exclude-from=.distignore --exclude=dist ./ dist/
+
+      - name: Plugin Check
+        uses: WordPress/plugin-check-action@v1
+        with:
+          build-dir: dist
