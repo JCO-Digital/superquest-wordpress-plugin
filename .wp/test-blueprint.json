@@ -43,10 +43,6 @@
     },
     {
       "step": "wp-cli",
-      "command": "wp option get superquest_quests --format=json"
-    },
-    {
-      "step": "wp-cli",
       "command": "wp post create --post_type=page --post_status=publish --post_title='Quest page' --post_name=quest-page --post_content='<!-- wp:paragraph --><p>Hello</p><!-- /wp:paragraph --><!-- wp:superquest/quest {\"questId\":\"quest-123\"} /-->' --porcelain"
     },
     {
@@ -72,6 +68,10 @@
     {
       "step": "wp-cli",
       "command": "wp eval 'update_option( \"superquest_popup_excluded_ids\", array( get_page_by_path( \"excluded-page\" )->ID ) ); echo \"excluded=\" . get_page_by_path( \"excluded-page\" )->ID . PHP_EOL;'"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp option update superquest_quests '{\"items\":[{\"id\":\"quest-123\",\"title\":\"Customer satisfaction quiz\"},{\"id\":\"quest-456\",\"title\":\"Autumn campaign poll\"},{\"id\":\"quest-789\",\"title\":\"Product knowledge quest\"},{\"id\":\"popup-1\",\"title\":\"Newsletter signup\"}],\"message\":\"\",\"updated\":1789545000}' --format=json"
     }
   ]
 }

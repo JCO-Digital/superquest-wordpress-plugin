@@ -1,63 +1,70 @@
 // Editor styles for the SuperQuest block.
+// Only the presentational card carries the SuperQuest colours. Every form
+// control stays on the editor's own surface: the combobox suggestion list has
+// no background of its own and the button variants draw their text in the
+// admin accent colour, so a dark background behind them is unreadable.
 
 .superquest-quest {
 
-	.superquest-placeholder {
-		border-radius: 10px;
-		border: 1px solid #1f2937;
+	.superquest-card {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		padding: 24px;
+		border-radius: 8px;
 		background: #111827;
 		color: #e5e7eb;
-
-		.components-placeholder__label {
-			color: #e5e7eb;
-			font-weight: 600;
-
-			svg {
-				fill: #22d3ee;
-			}
-		}
-
-		.components-placeholder__fieldset {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 12px;
-		}
-
-		p {
-			margin: 0;
-		}
-
-		.components-notice {
-			margin: 0;
-			width: 100%;
-		}
-
-		.components-external-link {
-			color: #67e8f9;
-		}
 	}
 
-	.superquest-placeholder__title {
-		font-size: 1.1rem;
+	.superquest-card__brand {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin: 0;
+		color: #94a3b8;
+		font-size: 12px;
 		font-weight: 600;
-		color: #fff;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+
+		svg {
+			fill: #22d3ee;
+		}
 	}
 
-	.superquest-placeholder__picker {
+	.superquest-card__title {
+		margin: 0;
+		color: #fff;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 1.3;
+	}
+
+	.superquest-card .components-notice {
+		margin: 4px 0 0;
+	}
+
+	// Stack the placeholder contents instead of letting them flow side by side.
+	.components-placeholder__fieldset {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.superquest-hint {
+		margin: 0;
+	}
+
+	.superquest-picker {
 		width: 100%;
 		max-width: 420px;
-
-		.components-base-control__label {
-			color: #e5e7eb;
-		}
 	}
 
-	.superquest-placeholder__actions {
+	.superquest-actions {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 12px;
-		margin-top: 8px;
 	}
 }
 

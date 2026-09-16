@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SuperQuest 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/superquest\n"
-"POT-Creation-Date: 2026-09-16T08:07:49+00:00\n"
+"POT-Creation-Date: 2026-09-16T08:41:53+00:00\n"
 "PO-Revision-Date: 2026-06-18 10:57+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Finnish\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: superquest.php includes/Admin/Menu.php:90 includes/Admin/Menu.php:91
-#: build/quest/index.js:1 build/quest/index.js:3
+#: build/quest/index.js:1 build/quest/index.js:2
 msgid "SuperQuest"
 msgstr ""
 
@@ -354,7 +354,7 @@ msgid "Search quests…"
 msgstr ""
 
 #: build/quest/index.js:2
-msgid "Cancel"
+msgid "Pick the quest this block should show."
 msgstr ""
 
 #: build/quest/index.js:2
@@ -364,15 +364,11 @@ msgid ""
 msgstr ""
 
 #: build/quest/index.js:2
-msgid "Change quest"
-msgstr ""
-
-#: build/quest/index.js:2 build/quest/index.js:3
-msgid "Edit in SuperQuest dashboard"
+msgid "No quests were found for the organisation."
 msgstr ""
 
 #: build/quest/index.js:2
-msgid "No quests were found for the organisation."
+msgid "Cancel"
 msgstr ""
 
 #: build/quest/index.js:2
@@ -388,9 +384,17 @@ msgid ""
 "Ask an administrator to set the Organisation ID in the SuperQuest settings."
 msgstr ""
 
+#: build/quest/index.js:2
+msgid "Change quest"
+msgstr ""
+
 #. translators: %s: human-readable time difference, e.g. "5 minutes ago".
 #: build/quest/index.js:3
 msgid "Quest list fetched %s."
+msgstr ""
+
+#: build/quest/index.js:3
+msgid "Edit in SuperQuest dashboard"
 msgstr ""
 
 #: build/quest/block.json

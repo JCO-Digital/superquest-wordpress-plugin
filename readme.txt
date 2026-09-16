@@ -44,7 +44,7 @@ Privacy policy: TODO-SUPERQUEST-PRIVACY-URL
 
 = Source code =
 
-The block's JavaScript is built with `@wordpress/scripts`. Its readable source is published at https://github.com/JCO-Digital/superquest.
+The block's JavaScript is built with `@wordpress/scripts`. Its readable source is published at https://github.com/JCO-Digital/superquest-wordpress-plugin.
 
 == Installation ==
 

@@ -1,15 +1,22 @@
 /**
  * WordPress dependencies
  */
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import {
+	BlockControls,
+	InspectorControls,
+	useBlockProps,
+} from '@wordpress/block-editor';
 import {
 	Button,
 	ComboboxControl,
 	ExternalLink,
+	Icon,
 	Notice,
 	PanelBody,
 	Placeholder,
 	Spinner,
+	ToolbarButton,
+	ToolbarGroup,
 } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { humanTimeDiff } from '@wordpress/date';
@@ -44,24 +51,26 @@ const dashboardUrl = ( organizationId, questId ) =>
 	) }/quests/${ encodeURIComponent( questId ) }`;
 
 /**
- * The inserter preview.
+ * Stands in for the quest the visitor will see, which is rendered by the
+ * SuperQuest app and cannot be previewed in the editor.
  *
- * @param {Object} props            Component props.
- * @param {Object} props.blockProps Block wrapper props.
+ * It carries the SuperQuest colours, so it holds no form controls: those keep
+ * the editor's own surface, where they stay legible.
+ *
+ * @param {Object} props          Component props.
+ * @param {string} props.title    Quest title.
+ * @param {Object} props.children Optional notice below the title.
  * @return {Element} Element.
  */
-function ExamplePlaceholder( { blockProps } ) {
+function QuestCard( { title, children } ) {
 	return (
-		<div { ...blockProps }>
-			<Placeholder
-				icon={ icon }
-				label={ __( 'SuperQuest', 'superquest' ) }
-				className="superquest-placeholder"
-			>
-				<p className="superquest-placeholder__title">
-					{ __( 'Customer satisfaction quiz', 'superquest' ) }
-				</p>
-			</Placeholder>
+		<div className="superquest-card">
+			<p className="superquest-card__brand">
+				<Icon icon={ icon } size={ 20 } />
+				{ __( 'SuperQuest', 'superquest' ) }
+			</p>
+			<p className="superquest-card__title">{ title }</p>
+			{ children }
 		</div>
 	);
 }
@@ -109,7 +118,13 @@ export default function Edit( { attributes, setAttributes } ) {
 	);
 
 	if ( isExample ) {
-		return <ExamplePlaceholder blockProps={ blockProps } />;
+		return (
+			<div { ...blockProps }>
+				<QuestCard
+					title={ __( 'Customer satisfaction quiz', 'superquest' ) }
+				/>
+			</div>
+		);
 	}
 
 	const organizationId = data?.organization_id ?? '';
@@ -168,18 +183,38 @@ export default function Edit( { attributes, setAttributes } ) {
 		/>
 	);
 
-	let content;
+	/**
+	 * Wraps the configuration states in the editor's own placeholder, so every
+	 * control keeps its default colours.
+	 *
+	 * @param {Element} children Placeholder content.
+	 * @return {Element} Element.
+	 */
+	const questPlaceholder = ( children ) => (
+		<Placeholder
+			icon={ icon }
+			label={ __( 'SuperQuest', 'superquest' ) }
+			instructions={ __(
+				'Pick the quest this block should show.',
+				'superquest'
+			) }
+		>
+			{ children }
+		</Placeholder>
+	);
+
+	let body;
 
 	if ( isLoading ) {
-		content = <Spinner />;
+		body = questPlaceholder( <Spinner /> );
 	} else if ( error && ! data ) {
-		content = (
+		body = questPlaceholder(
 			<Notice status="error" isDismissible={ false }>
 				{ error }
 			</Notice>
 		);
 	} else if ( ! organizationId ) {
-		content = (
+		body = questPlaceholder(
 			<>
 				<Notice status="warning" isDismissible={ false }>
 					{ __(
@@ -192,7 +227,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						{ __( 'Open SuperQuest settings', 'superquest' ) }
 					</Button>
 				) : (
-					<p>
+					<p className="superquest-hint">
 						{ __(
 							'Ask an administrator to set the Organisation ID in the SuperQuest settings.',
 							'superquest'
@@ -201,24 +236,38 @@ export default function Edit( { attributes, setAttributes } ) {
 				) }
 			</>
 		);
-	} else if ( quests.length === 0 && ! hasQuest ) {
-		content = (
+	} else if ( hasQuest && ! isChoosing ) {
+		body = (
+			<QuestCard title={ selected ? selected.title || questId : questId }>
+				{ isStale && (
+					<Notice status="warning" isDismissible={ false }>
+						{ __(
+							'This quest is no longer in the fetched quest list. Pick another one or refresh the list.',
+							'superquest'
+						) }
+					</Notice>
+				) }
+			</QuestCard>
+		);
+	} else if ( quests.length === 0 ) {
+		body = questPlaceholder(
 			<>
-				<p>
-					{ __(
-						'No quests were found for the organisation.',
-						'superquest'
-					) }
-					{ data?.message ? ` ${ data.message }` : '' }
+				<p className="superquest-hint">
+					{ data?.message
+						? data.message
+						: __(
+								'No quests were found for the organisation.',
+								'superquest'
+							) }
 				</p>
 				{ refreshButton }
 			</>
 		);
-	} else if ( ! hasQuest || isChoosing ) {
-		content = (
-			<div className="superquest-placeholder__picker">
-				{ questPicker }
-				<div className="superquest-placeholder__actions">
+	} else {
+		body = questPlaceholder(
+			<>
+				<div className="superquest-picker">{ questPicker }</div>
+				<div className="superquest-actions">
 					{ refreshButton }
 					{ hasQuest && (
 						<Button
@@ -229,41 +278,22 @@ export default function Edit( { attributes, setAttributes } ) {
 						</Button>
 					) }
 				</div>
-			</div>
-		);
-	} else {
-		content = (
-			<>
-				<p className="superquest-placeholder__title">
-					{ selected ? selected.title || selected.id : questId }
-				</p>
-				{ isStale && (
-					<Notice status="warning" isDismissible={ false }>
-						{ __(
-							'This quest is no longer in the fetched quest list. Pick another one or refresh the list.',
-							'superquest'
-						) }
-					</Notice>
-				) }
-				<div className="superquest-placeholder__actions">
-					<Button
-						variant="secondary"
-						onClick={ () => setIsChoosing( true ) }
-					>
-						{ __( 'Change quest', 'superquest' ) }
-					</Button>
-					<ExternalLink
-						href={ dashboardUrl( organizationId, questId ) }
-					>
-						{ __( 'Edit in SuperQuest dashboard', 'superquest' ) }
-					</ExternalLink>
-				</div>
 			</>
 		);
 	}
 
 	return (
 		<>
+			{ hasQuest && ! isChoosing && organizationId && (
+				<BlockControls>
+					<ToolbarGroup>
+						<ToolbarButton onClick={ () => setIsChoosing( true ) }>
+							{ __( 'Change quest', 'superquest' ) }
+						</ToolbarButton>
+					</ToolbarGroup>
+				</BlockControls>
+			) }
+
 			<InspectorControls>
 				<PanelBody title={ __( 'Quest', 'superquest' ) }>
 					{ organizationId && quests.length > 0 && (
@@ -296,15 +326,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 			</InspectorControls>
 
-			<div { ...blockProps }>
-				<Placeholder
-					icon={ icon }
-					label={ __( 'SuperQuest', 'superquest' ) }
-					className="superquest-placeholder"
-				>
-					{ content }
-				</Placeholder>
-			</div>
+			<div { ...blockProps }>{ body }</div>
 		</>
 	);
 }
