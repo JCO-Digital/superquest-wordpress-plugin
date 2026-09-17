@@ -25,6 +25,12 @@ final class Quests {
 	public const API_URL = 'https://api.jquest.fi/organizationgames-getorganizationgames';
 
 	/**
+	 * SuperQuest API request timeout in seconds. Sized for cold starts on
+	 * serverless endpoints.
+	 */
+	public const REQUEST_TIMEOUT = 25;
+
+	/**
 	 * Transient held while a refresh is in flight or was just done.
 	 */
 	public const LOCK_TRANSIENT = 'superquest_refresh_lock';
@@ -113,7 +119,7 @@ final class Quests {
 				self::API_URL
 			),
 			array(
-				'timeout'    => 5,
+				'timeout'    => self::REQUEST_TIMEOUT,
 				'user-agent' => 'SuperQuest/' . SUPERQUEST_VERSION . '; ' . home_url( '/' ),
 			)
 		);

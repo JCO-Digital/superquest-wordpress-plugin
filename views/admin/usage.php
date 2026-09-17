@@ -23,7 +23,7 @@ $superquest_table->prepare_items();
 
 	<div class="superquest-card">
 		<p class="description">
-			<?php esc_html_e( 'Every page, post, template and synced pattern whose content holds a SuperQuest block. The list is read from the database each time this screen opens.', 'superquest' ); ?>
+			<?php esc_html_e( 'Every page, post, template and synced pattern whose content holds a SuperQuest block.', 'superquest' ); ?>
 		</p>
 		<p class="description">
 			<?php
