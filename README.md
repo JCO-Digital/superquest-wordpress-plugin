@@ -25,7 +25,7 @@ pnpm playground   # local WordPress Playground at http://127.0.0.1:8881 with Plu
 | Path | Purpose |
 | --- | --- |
 | `superquest.php` | Plugin header, constants, autoloader, boot |
-| `includes/` | PHP classes, PSR-4 under the `SuperQuest` namespace |
+| `includes/` | PHP classes in the `SuperQuest` namespace, autoloaded from `class-*.php` files |
 | `src/quest/` | Block source (built to `build/quest/`, which ships; `src/` does not) |
 | `views/admin/` | Admin screen templates |
 | `assets/` | Admin stylesheet and logo |

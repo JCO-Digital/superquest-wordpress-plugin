@@ -20,9 +20,6 @@
 	<rule ref="WordPress-Docs"/>
 	<rule ref="WordPress-Extra">
 		<exclude name="WordPress.PHP.YodaConditions"/>
-		<!-- Classes are autoloaded PSR-4 style from includes/. -->
-		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
-		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
 	</rule>
 
 	<rule ref="WordPress.WP.I18n">

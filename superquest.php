@@ -29,7 +29,8 @@ define( 'SUPERQUEST_URL', plugin_dir_url( __FILE__ ) );
 /**
  * Autoloads classes from the SuperQuest namespace.
  *
- * Maps `SuperQuest\Foo\Bar` to `includes/Foo/Bar.php`.
+ * Maps `SuperQuest\Foo\Bar_Baz` to `includes/foo/class-bar-baz.php`, the file
+ * naming the WordPress coding standards ask for.
  *
  * @param string $class_name Fully qualified class name.
  *
@@ -42,8 +43,17 @@ spl_autoload_register(
 			return;
 		}
 
-		$relative = substr( $class_name, strlen( $prefix ) );
-		$file     = SUPERQUEST_PATH . 'includes/' . str_replace( '\\', '/', $relative ) . '.php';
+		$parts = explode( '\\', substr( $class_name, strlen( $prefix ) ) );
+		$parts = array_map(
+			static function ( string $part ): string {
+				return strtolower( str_replace( '_', '-', $part ) );
+			},
+			$parts
+		);
+
+		$parts[ array_key_last( $parts ) ] = 'class-' . end( $parts );
+
+		$file = SUPERQUEST_PATH . 'includes/' . implode( '/', $parts ) . '.php';
 
 		if ( is_readable( $file ) ) {
 			require $file;
