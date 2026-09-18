@@ -46,8 +46,10 @@ final class Plugin {
 
 		Quests::register();
 		Block::register();
+		Shortcode::register();
 		Loader::register();
 		Popup::register();
+		Elementor\Integration::register();
 
 		add_action( 'rest_api_init', array( $this, 'register_rest_routes' ) );
 
@@ -58,7 +60,7 @@ final class Plugin {
 	}
 
 	/**
-	 * Registers the REST routes the block editor uses.
+	 * Registers the REST routes the editors use to pick a quest.
 	 *
 	 * @return void
 	 */

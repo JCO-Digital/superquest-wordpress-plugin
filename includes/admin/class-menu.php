@@ -272,7 +272,7 @@ final class Menu {
 	 * @return void
 	 */
 	public static function render_loader_section(): void {
-		echo '<p>' . esc_html__( 'The SuperQuest loader is a small script from files.jquest.fi that renders quests. It is added to pages that hold a quest block or a popup quest.', 'superquest' ) . '</p>';
+		echo '<p>' . esc_html__( 'The SuperQuest loader is a small script from files.jquest.fi that renders quests. It is added to pages that hold a quest — as a block, a shortcode or an Elementor widget — or a popup quest.', 'superquest' ) . '</p>';
 	}
 
 	/**
@@ -285,7 +285,7 @@ final class Menu {
 			Options::ALWAYS_LOAD,
 			Options::always_load(),
 			__( 'Load the SuperQuest loader on every page', 'superquest' ),
-			__( 'Use this when quests are inserted by other means than the block or the popup, for example from a theme template.', 'superquest' )
+			__( 'Use this when quests are inserted by other means than the block, the shortcode, the Elementor widget or the popup, for example from a theme template.', 'superquest' )
 		);
 	}
 

@@ -35,8 +35,30 @@
       }
     },
     {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "elementor"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
       "step": "activatePlugin",
       "pluginPath": "superquest/superquest.php"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp option update elementor_onboarded 1"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp option update elementor_css_print_method internal"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp eval 'delete_transient( \"elementor_activation_redirect\" );'"
     }
   ]
 }

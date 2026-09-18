@@ -23,7 +23,7 @@ $superquest_table->prepare_items();
 
 	<div class="superquest-card">
 		<p class="description">
-			<?php esc_html_e( 'Every page, post, template and synced pattern whose content holds a SuperQuest block.', 'superquest' ); ?>
+			<?php esc_html_e( 'Every page, post, template, synced pattern and Elementor template that holds a SuperQuest quest, whether it was placed as a block, a shortcode or an Elementor widget.', 'superquest' ); ?>
 		</p>
 		<p class="description">
 			<?php
