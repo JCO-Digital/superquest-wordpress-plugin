@@ -43,9 +43,11 @@ jobs:
 
       # Check what actually ships: the tree minus everything in .distignore.
       - name: Assemble distribution
-        run: rsync -a --exclude-from=.distignore --exclude=dist ./ dist/
+        run: |
+          mkdir -p dist/superquest
+          rsync -a --exclude-from=.distignore --exclude=dist ./ dist/superquest/
 
       - name: Plugin Check
         uses: WordPress/plugin-check-action@v1
         with:
-          build-dir: dist
+          build-dir: dist/superquest
