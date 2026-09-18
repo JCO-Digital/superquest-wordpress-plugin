@@ -10,7 +10,6 @@ import {
 	Button,
 	ComboboxControl,
 	ExternalLink,
-	Icon,
 	Notice,
 	PanelBody,
 	Placeholder,
@@ -54,24 +53,27 @@ const dashboardUrl = ( organizationId, questId ) =>
  * Stands in for the quest the visitor will see, which is rendered by the
  * SuperQuest app and cannot be previewed in the editor.
  *
- * It carries the SuperQuest colours, so it holds no form controls: those keep
- * the editor's own surface, where they stay legible.
+ * It is the editor's own placeholder, so a configured block sits in the
+ * content the way every other unpreviewable block does rather than drawing
+ * the eye with the SuperQuest colours.
  *
  * @param {Object} props          Component props.
  * @param {string} props.title    Quest title.
  * @param {Object} props.children Optional notice below the title.
  * @return {Element} Element.
  */
-function QuestCard( { title, children } ) {
+function QuestPreview( { title, children } ) {
 	return (
-		<div className="superquest-card">
-			<p className="superquest-card__brand">
-				<Icon icon={ icon } size={ 20 } />
-				{ __( 'SuperQuest', 'superquest' ) }
-			</p>
-			<p className="superquest-card__title">{ title }</p>
+		<Placeholder
+			icon={ icon }
+			label={ title }
+			instructions={ __(
+				'SuperQuest loads this quest when a visitor opens the page.',
+				'superquest'
+			) }
+		>
 			{ children }
-		</div>
+		</Placeholder>
 	);
 }
 
@@ -120,7 +122,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	if ( isExample ) {
 		return (
 			<div { ...blockProps }>
-				<QuestCard
+				<QuestPreview
 					title={ __( 'Customer satisfaction quiz', 'superquest' ) }
 				/>
 			</div>
@@ -238,7 +240,9 @@ export default function Edit( { attributes, setAttributes } ) {
 		);
 	} else if ( hasQuest && ! isChoosing ) {
 		body = (
-			<QuestCard title={ selected ? selected.title || questId : questId }>
+			<QuestPreview
+				title={ selected ? selected.title || questId : questId }
+			>
 				{ isStale && (
 					<Notice status="warning" isDismissible={ false }>
 						{ __(
@@ -247,7 +251,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						) }
 					</Notice>
 				) }
-			</QuestCard>
+			</QuestPreview>
 		);
 	} else if ( quests.length === 0 ) {
 		body = questPlaceholder(

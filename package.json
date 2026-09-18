@@ -44,13 +44,11 @@
     "@wp-playground/cli": "^3.1.54"
   },
   "packageManager": "pnpm@11.8.0",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JCO-Digital/superquest-wordpress-plugin.git"
   },
   "keywords": [],
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/JCO-Digital/superquest-wordpress-plugin/issues"
   },

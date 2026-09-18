@@ -9,16 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-16T08:41:53+00:00\n"
+"POT-Creation-Date: 2026-09-18T12:35:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: superquest\n"
 
 #. Plugin Name of the plugin
 #: superquest.php
-#: includes/Admin/Menu.php:90
-#: includes/Admin/Menu.php:91
-#: build/quest/index.js:1
+#: includes/admin/class-menu.php:90
+#: includes/admin/class-menu.php:91
 #: build/quest/index.js:2
 msgid "SuperQuest"
 msgstr ""
@@ -39,215 +38,215 @@ msgstr ""
 msgid "J&Co Digital Oy"
 msgstr ""
 
-#: includes/Admin/Menu.php:101
+#: includes/admin/class-menu.php:101
 msgid "SuperQuest settings"
 msgstr ""
 
-#: includes/Admin/Menu.php:102
+#: includes/admin/class-menu.php:102
 msgid "General"
 msgstr ""
 
-#: includes/Admin/Menu.php:110
+#: includes/admin/class-menu.php:110
 msgid "SuperQuest popup"
 msgstr ""
 
-#: includes/Admin/Menu.php:111
+#: includes/admin/class-menu.php:111
 #: views/admin/popup.php:18
 #: views/admin/usage.php:33
 msgid "Popup"
 msgstr ""
 
-#: includes/Admin/Menu.php:119
+#: includes/admin/class-menu.php:119
 msgid "SuperQuest usage"
 msgstr ""
 
-#: includes/Admin/Menu.php:120
+#: includes/admin/class-menu.php:120
 #: views/admin/usage.php:21
 msgid "Usage"
 msgstr ""
 
-#: includes/Admin/Menu.php:136
+#: includes/admin/class-menu.php:136
 msgid "Organisation"
 msgstr ""
 
-#: includes/Admin/Menu.php:143
+#: includes/admin/class-menu.php:143
 msgid "Organisation ID"
 msgstr ""
 
-#: includes/Admin/Menu.php:152
+#: includes/admin/class-menu.php:152
 msgid "Loader"
 msgstr ""
 
-#: includes/Admin/Menu.php:159
+#: includes/admin/class-menu.php:159
 msgid "Always load"
 msgstr ""
 
-#: includes/Admin/Menu.php:167
+#: includes/admin/class-menu.php:167
 msgid "Cookie consent"
 msgstr ""
 
-#: includes/Admin/Menu.php:175
+#: includes/admin/class-menu.php:175
 msgid "Popup quests"
 msgstr ""
 
-#: includes/Admin/Menu.php:182
+#: includes/admin/class-menu.php:182
 msgid "Excluded pages"
 msgstr ""
 
-#: includes/Admin/Menu.php:191
-#: includes/Admin/Usage_Table.php:49
+#: includes/admin/class-menu.php:191
+#: includes/admin/class-usage-table.php:49
 msgid "Quests"
 msgstr ""
 
-#: includes/Admin/Menu.php:252
+#: includes/admin/class-menu.php:252
 msgid "The organisation whose quests can be inserted. You find the ID in the SuperQuest dashboard."
 msgstr ""
 
-#: includes/Admin/Menu.php:266
+#: includes/admin/class-menu.php:266
 msgid "Saving a new ID fetches the organisation's quests right away."
 msgstr ""
 
-#: includes/Admin/Menu.php:275
+#: includes/admin/class-menu.php:275
 msgid "The SuperQuest loader is a small script from files.jquest.fi that renders quests. It is added to pages that hold a quest block or a popup quest."
 msgstr ""
 
-#: includes/Admin/Menu.php:287
+#: includes/admin/class-menu.php:287
 msgid "Load the SuperQuest loader on every page"
 msgstr ""
 
-#: includes/Admin/Menu.php:288
+#: includes/admin/class-menu.php:288
 msgid "Use this when quests are inserted by other means than the block or the popup, for example from a theme template."
 msgstr ""
 
-#: includes/Admin/Menu.php:301
+#: includes/admin/class-menu.php:301
 msgid "Load SuperQuest before cookie consent is given"
 msgstr ""
 
-#: includes/Admin/Menu.php:302
+#: includes/admin/class-menu.php:302
 msgid "Marks the loader as essential for Cookiebot, OneTrust and CookieYes so quests work before the visitor answers the consent banner. Only enable this if your privacy assessment allows it."
 msgstr ""
 
-#: includes/Admin/Menu.php:312
+#: includes/admin/class-menu.php:312
 msgid "Every enabled quest below is inserted at the top of the footer on every page of the site, apart from the excluded pages."
 msgstr ""
 
-#: includes/Admin/Menu.php:360
+#: includes/admin/class-menu.php:360
 msgid "You are not allowed to refresh the quest list."
 msgstr ""
 
-#: includes/Admin/Menu.php:393
+#: includes/admin/class-menu.php:393
 msgid "Quest list refreshed."
 msgstr ""
 
 #. translators: %s: error message.
-#: includes/Admin/Menu.php:404
+#: includes/admin/class-menu.php:404
 #, php-format
 msgid "Could not refresh the quest list: %s"
 msgstr ""
 
-#: includes/Admin/Quests_Table.php:46
+#: includes/admin/class-quests-table.php:46
 msgid "Title"
 msgstr ""
 
-#: includes/Admin/Quests_Table.php:47
+#: includes/admin/class-quests-table.php:47
 msgid "Quest ID"
 msgstr ""
 
-#: includes/Admin/Quests_Table.php:64
-#: includes/Admin/Usage_Table.php:85
-#: includes/Admin/Usage_Table.php:106
+#: includes/admin/class-quests-table.php:64
+#: includes/admin/class-usage-table.php:85
+#: includes/admin/class-usage-table.php:106
 msgid "(no title)"
 msgstr ""
 
 #. translators: %s: human-readable time difference, e.g. "5 minutes".
-#: includes/Admin/Quests_Table.php:91
+#: includes/admin/class-quests-table.php:91
 #, php-format
 msgid "Last fetched %s ago."
 msgstr ""
 
-#: includes/Admin/Quests_Table.php:107
+#: includes/admin/class-quests-table.php:107
 msgid "No quests fetched yet. Save an Organisation ID or refresh the list."
 msgstr ""
 
-#: includes/Admin/Usage_Table.php:46
+#: includes/admin/class-usage-table.php:46
 msgid "Where"
 msgstr ""
 
-#: includes/Admin/Usage_Table.php:47
+#: includes/admin/class-usage-table.php:47
 msgid "ID"
 msgstr ""
 
-#: includes/Admin/Usage_Table.php:48
+#: includes/admin/class-usage-table.php:48
 msgid "Type"
 msgstr ""
 
-#: includes/Admin/Usage_Table.php:99
+#: includes/admin/class-usage-table.php:99
 msgid "View"
 msgstr ""
 
-#: includes/Admin/Usage_Table.php:114
+#: includes/admin/class-usage-table.php:114
 msgid "Used on:"
 msgstr ""
 
-#: includes/Admin/Usage_Table.php:133
+#: includes/admin/class-usage-table.php:133
 msgid "No quest selected"
 msgstr ""
 
-#: includes/Admin/Usage_Table.php:155
+#: includes/admin/class-usage-table.php:155
 msgid "Synced pattern"
 msgstr ""
 
-#: includes/Admin/Usage_Table.php:171
+#: includes/admin/class-usage-table.php:171
 msgid "No SuperQuest blocks found."
 msgstr ""
 
-#: includes/Plugin.php:80
+#: includes/class-plugin.php:80
 #: views/admin/general.php:22
 msgid "Settings"
 msgstr ""
 
-#: includes/Quests.php:93
+#: includes/class-quests.php:99
 msgid "Set an Organisation ID before fetching quests."
 msgstr ""
 
-#: includes/Quests.php:101
+#: includes/class-quests.php:107
 msgid "The quest list was refreshed a moment ago. Try again shortly."
 msgstr ""
 
-#: includes/Quests.php:126
+#: includes/class-quests.php:132
 msgid "Could not reach the SuperQuest API."
 msgstr ""
 
-#: includes/Quests.php:133
-#: includes/Quests.php:137
+#: includes/class-quests.php:139
+#: includes/class-quests.php:143
 msgid "The SuperQuest API returned an unexpected response."
 msgstr ""
 
-#: includes/Quests.php:149
+#: includes/class-quests.php:155
 msgid "The SuperQuest API rejected the request."
 msgstr ""
 
-#: includes/Rest/Quests_Controller.php:146
+#: includes/rest/class-quests-controller.php:146
 msgid "The configured SuperQuest organisation ID."
 msgstr ""
 
-#: includes/Rest/Quests_Controller.php:151
+#: includes/rest/class-quests-controller.php:151
 msgid "The quests available to the organisation."
 msgstr ""
 
-#: includes/Rest/Quests_Controller.php:163
+#: includes/rest/class-quests-controller.php:163
 msgid "Message returned by the SuperQuest API with the last fetch."
 msgstr ""
 
-#: includes/Rest/Quests_Controller.php:168
+#: includes/rest/class-quests-controller.php:168
 msgid "Unix timestamp of the last fetch, 0 when never fetched."
 msgstr ""
 
-#: includes/Rest/Quests_Controller.php:173
+#: includes/rest/class-quests-controller.php:173
 msgid "Whether the current user can change the plugin settings."
 msgstr ""
 
-#: includes/Rest/Quests_Controller.php:178
+#: includes/rest/class-quests-controller.php:178
 msgid "URL of the settings screen, empty when the user cannot manage settings."
 msgstr ""
 
@@ -304,7 +303,7 @@ msgid "Remove this quest when saving"
 msgstr ""
 
 #: views/admin/usage.php:26
-msgid "Every page, post, template and synced pattern whose content holds a SuperQuest block. The list is read from the database each time this screen opens."
+msgid "Every page, post, template and synced pattern whose content holds a SuperQuest block."
 msgstr ""
 
 #. translators: %s: link to the Popup screen.
@@ -315,6 +314,10 @@ msgstr ""
 
 #: build/quest/index.js:1
 msgid "The request failed."
+msgstr ""
+
+#: build/quest/index.js:1
+msgid "SuperQuest loads this quest when a visitor opens the page."
 msgstr ""
 
 #: build/quest/index.js:1
