@@ -39,8 +39,8 @@ The loader is loaded after cookie consent by default when a consent manager bloc
 **Dashboard link (dashboard.jquest.fi)**
 The block offers editors a link to open the selected quest in the SuperQuest dashboard. Following the link is up to the editor; nothing is sent automatically.
 
-Terms of service: TODO-SUPERQUEST-TERMS-URL
-Privacy policy: TODO-SUPERQUEST-PRIVACY-URL
+Terms of use: https://superquest.staging.bojaco.com/en/terms-of-use/
+Privacy policy: https://superquest.staging.bojaco.com/en/privacy-policy/
 
 = Source code =
 
