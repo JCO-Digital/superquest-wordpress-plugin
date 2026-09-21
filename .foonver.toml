@@ -1,0 +1,2 @@
+push = true
+version-sync = ["superquest.php","readme.txt","src/quest/block.json"]
