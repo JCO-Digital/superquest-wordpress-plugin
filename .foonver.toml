@@ -1,2 +1,5 @@
-push = true
 version-sync = ["superquest.php","readme.txt","src/quest/block.json"]
+changelog = true
+changelog-format = "wordpress"
+changelog-file = "readme.txt"
+changelog-start = "== Changelog =="
