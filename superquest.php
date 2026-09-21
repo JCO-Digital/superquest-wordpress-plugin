@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       SuperQuest
- * Plugin URI:        https://superquest.fi
+ * Plugin URI:        https://superquest.ai
  * Description:       Embed SuperQuest quests, quizzes and polls in your content with a block or as a site-wide popup.
  * Version:           1.0.1
  * Requires at least: 6.5

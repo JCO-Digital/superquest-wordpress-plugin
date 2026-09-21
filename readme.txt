@@ -1,6 +1,6 @@
 === SuperQuest ===
 Contributors: jcodigital
-Tags: quiz, gamification, learning, survey, poll
+Tags: quiz, gamification, learning, survey, poll, wheel-of-fortune
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
@@ -26,7 +26,7 @@ A SuperQuest account is required. Quests are created and edited in the SuperQues
 
 = External services =
 
-This plugin connects to SuperQuest, a service operated by J&Co Digital Oy under the domain superquest.fi. The plugin does not work without it.
+This plugin connects to SuperQuest, a service operated by J&Co Digital Oy under the domain superquest.ai. The plugin does not work without it.
 
 **Quest list (api.jquest.fi)**
 When an administrator saves the Organisation ID or refreshes the quest list, and when an editor presses "Refresh quests" in the block, the plugin sends the Organisation ID to `https://api.jquest.fi` and stores the returned list of quest titles and IDs on your site. No visitor data is involved.
