@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-18T12:35:46+00:00\n"
+"POT-Creation-Date: 2026-09-18T14:17:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: superquest\n"
@@ -18,14 +18,15 @@ msgstr ""
 #: superquest.php
 #: includes/admin/class-menu.php:90
 #: includes/admin/class-menu.php:91
+#: includes/elementor/class-quest-widget.php:52
+#: includes/elementor/class-quest-widget.php:267
 #: build/quest/index.js:2
 msgid "SuperQuest"
 msgstr ""
 
 #. Plugin URI of the plugin
-#. Author URI of the plugin
 #: superquest.php
-msgid "https://jco.fi"
+msgid "https://superquest.fi"
 msgstr ""
 
 #. Description of the plugin
@@ -36,6 +37,11 @@ msgstr ""
 #. Author of the plugin
 #: superquest.php
 msgid "J&Co Digital Oy"
+msgstr ""
+
+#. Author URI of the plugin
+#: superquest.php
+msgid "https://jco.fi"
 msgstr ""
 
 #: includes/admin/class-menu.php:101
@@ -94,7 +100,7 @@ msgid "Excluded pages"
 msgstr ""
 
 #: includes/admin/class-menu.php:191
-#: includes/admin/class-usage-table.php:49
+#: includes/admin/class-usage-table.php:50
 msgid "Quests"
 msgstr ""
 
@@ -107,7 +113,7 @@ msgid "Saving a new ID fetches the organisation's quests right away."
 msgstr ""
 
 #: includes/admin/class-menu.php:275
-msgid "The SuperQuest loader is a small script from files.jquest.fi that renders quests. It is added to pages that hold a quest block or a popup quest."
+msgid "The SuperQuest loader is a small script from files.jquest.fi that renders quests. It is added to pages that hold a quest — as a block, a shortcode or an Elementor widget — or a popup quest."
 msgstr ""
 
 #: includes/admin/class-menu.php:287
@@ -115,7 +121,7 @@ msgid "Load the SuperQuest loader on every page"
 msgstr ""
 
 #: includes/admin/class-menu.php:288
-msgid "Use this when quests are inserted by other means than the block or the popup, for example from a theme template."
+msgid "Use this when quests are inserted by other means than the block, the shortcode, the Elementor widget or the popup, for example from a theme template."
 msgstr ""
 
 #: includes/admin/class-menu.php:301
@@ -149,12 +155,13 @@ msgid "Title"
 msgstr ""
 
 #: includes/admin/class-quests-table.php:47
+#: includes/elementor/class-quest-widget.php:128
 msgid "Quest ID"
 msgstr ""
 
 #: includes/admin/class-quests-table.php:64
-#: includes/admin/class-usage-table.php:85
-#: includes/admin/class-usage-table.php:106
+#: includes/admin/class-usage-table.php:88
+#: includes/admin/class-usage-table.php:109
 msgid "(no title)"
 msgstr ""
 
@@ -180,27 +187,52 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: includes/admin/class-usage-table.php:99
+#: includes/admin/class-usage-table.php:49
+msgid "Source"
+msgstr ""
+
+#: includes/admin/class-usage-table.php:102
 msgid "View"
 msgstr ""
 
-#: includes/admin/class-usage-table.php:114
+#: includes/admin/class-usage-table.php:117
 msgid "Used on:"
 msgstr ""
 
-#: includes/admin/class-usage-table.php:133
+#: includes/admin/class-usage-table.php:136
+#: includes/elementor/class-quest-widget.php:250
 msgid "No quest selected"
 msgstr ""
 
-#: includes/admin/class-usage-table.php:155
+#: includes/admin/class-usage-table.php:188
+msgid "Block"
+msgstr ""
+
+#: includes/admin/class-usage-table.php:190
+msgid "Shortcode"
+msgstr ""
+
+#: includes/admin/class-usage-table.php:192
+msgid "Elementor"
+msgstr ""
+
+#: includes/admin/class-usage-table.php:194
+msgid "Unknown"
+msgstr ""
+
+#: includes/admin/class-usage-table.php:207
 msgid "Synced pattern"
 msgstr ""
 
-#: includes/admin/class-usage-table.php:171
-msgid "No SuperQuest blocks found."
+#: includes/admin/class-usage-table.php:211
+msgid "Elementor template"
 msgstr ""
 
-#: includes/class-plugin.php:80
+#: includes/admin/class-usage-table.php:227
+msgid "No quests found."
+msgstr ""
+
+#: includes/class-plugin.php:82
 #: views/admin/general.php:22
 msgid "Settings"
 msgstr ""
@@ -224,6 +256,50 @@ msgstr ""
 
 #: includes/class-quests.php:155
 msgid "The SuperQuest API rejected the request."
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:91
+#: includes/elementor/class-quest-widget.php:112
+#: views/admin/popup-quests-field.php:56
+#: build/quest/index.js:2
+msgid "Quest"
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:131
+msgid "Use this when the quest is not in the list yet. It takes precedence over the picker."
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:211
+#: build/quest/index.js:2
+msgid "No SuperQuest organisation is set for this site."
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:212
+#: build/quest/index.js:2
+msgid "Ask an administrator to set the Organisation ID in the SuperQuest settings."
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:216
+#: build/quest/index.js:2
+msgid "No quests were found for the organisation."
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:225
+#: build/quest/index.js:2
+msgid "Open SuperQuest settings"
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:251
+msgid "Pick a quest in the panel."
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:254
+#: build/quest/index.js:1
+msgid "SuperQuest loads this quest when a visitor opens the page."
+msgstr ""
+
+#: includes/elementor/class-quest-widget.php:257
+msgid "This quest is not in the fetched quest list. It still renders, but its title is unknown here."
 msgstr ""
 
 #: includes/rest/class-quests-controller.php:146
@@ -281,11 +357,6 @@ msgstr ""
 msgid "Quest %d"
 msgstr ""
 
-#: views/admin/popup-quests-field.php:56
-#: build/quest/index.js:2
-msgid "Quest"
-msgstr ""
-
 #: views/admin/popup-quests-field.php:58
 msgid "— Select a quest —"
 msgstr ""
@@ -303,7 +374,7 @@ msgid "Remove this quest when saving"
 msgstr ""
 
 #: views/admin/usage.php:26
-msgid "Every page, post, template and synced pattern whose content holds a SuperQuest block."
+msgid "Every page, post, template, synced pattern and Elementor template that holds a SuperQuest quest, whether it was placed as a block, a shortcode or an Elementor widget."
 msgstr ""
 
 #. translators: %s: link to the Popup screen.
@@ -314,10 +385,6 @@ msgstr ""
 
 #: build/quest/index.js:1
 msgid "The request failed."
-msgstr ""
-
-#: build/quest/index.js:1
-msgid "SuperQuest loads this quest when a visitor opens the page."
 msgstr ""
 
 #: build/quest/index.js:1
@@ -347,23 +414,7 @@ msgid "This quest is no longer in the fetched quest list. Pick another one or re
 msgstr ""
 
 #: build/quest/index.js:2
-msgid "No quests were found for the organisation."
-msgstr ""
-
-#: build/quest/index.js:2
 msgid "Cancel"
-msgstr ""
-
-#: build/quest/index.js:2
-msgid "No SuperQuest organisation is set for this site."
-msgstr ""
-
-#: build/quest/index.js:2
-msgid "Open SuperQuest settings"
-msgstr ""
-
-#: build/quest/index.js:2
-msgid "Ask an administrator to set the Organisation ID in the SuperQuest settings."
 msgstr ""
 
 #: build/quest/index.js:2

@@ -59,6 +59,46 @@
     },
     {
       "step": "wp-cli",
+      "command": "wp post create --post_type=page --post_status=publish --post_title='Shortcode page' --post_name=shortcode-page --post_content='[superquest id=quest-456]' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post create --post_type=page --post_status=publish --post_title='Shortcode block page' --post_name=shortcode-block-page --post_content='<!-- wp:shortcode -->[superquest id=quest-456]<!-- /wp:shortcode -->' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post create --post_type=page --post_status=publish --post_title='Shortcode no id' --post_name=shortcode-no-id --post_content='[superquest]' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post create --post_type=page --post_status=publish --post_title='Escaped shortcode decoy' --post_name=escaped-shortcode --post_content='<!-- wp:paragraph --><p>Write [[superquest id=nope]] to place a quest.</p><!-- /wp:paragraph -->' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post create --post_type=page --post_status=publish --post_title='Block mention decoy' --post_name=block-mention --post_content='<!-- wp:code --><pre class=\"wp-block-code\"><code>&lt;!-- wp:superquest/quest /--&gt;</code></pre><!-- /wp:code -->' --porcelain"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp eval \"$id = wp_insert_post( array( 'post_title' => 'Elementor quest page', 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'elementor-quest-page' ) ); update_post_meta( $id, '_elementor_edit_mode', 'builder' ); update_post_meta( $id, '_elementor_template_type', 'wp-page' ); update_post_meta( $id, '_elementor_data', wp_slash( base64_decode( 'W3siaWQiOiAiYTEiLCAiZWxUeXBlIjogImNvbnRhaW5lciIsICJlbGVtZW50cyI6IFt7ImlkIjogImIyIiwgImVsVHlwZSI6ICJ3aWRnZXQiLCAid2lkZ2V0VHlwZSI6ICJzdXBlcnF1ZXN0LXF1ZXN0IiwgInNldHRpbmdzIjogeyJxdWVzdF9pZCI6ICJxdWVzdC03ODkifX1dfV0=' ) ) ); echo 'elementor-quest-page=' . $id . PHP_EOL;\""
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp eval \"$id = wp_insert_post( array( 'post_title' => 'Elementor shortcode page', 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'elementor-shortcode-page' ) ); update_post_meta( $id, '_elementor_edit_mode', 'builder' ); update_post_meta( $id, '_elementor_template_type', 'wp-page' ); update_post_meta( $id, '_elementor_data', wp_slash( base64_decode( 'W3siaWQiOiAiYzEiLCAiZWxUeXBlIjogImNvbnRhaW5lciIsICJlbGVtZW50cyI6IFt7ImlkIjogImQyIiwgImVsVHlwZSI6ICJ3aWRnZXQiLCAid2lkZ2V0VHlwZSI6ICJ0ZXh0LWVkaXRvciIsICJzZXR0aW5ncyI6IHsiZWRpdG9yIjogIltzdXBlcnF1ZXN0IGlkPXF1ZXN0LTQ1Nl0ifX1dfV0=' ) ) ); echo 'elementor-shortcode-page=' . $id . PHP_EOL;\""
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp eval \"$id = wp_insert_post( array( 'post_title' => 'Elementor manual id page', 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'elementor-manual-page' ) ); update_post_meta( $id, '_elementor_edit_mode', 'builder' ); update_post_meta( $id, '_elementor_template_type', 'wp-page' ); update_post_meta( $id, '_elementor_data', wp_slash( base64_decode( 'W3siaWQiOiAiZTEiLCAiZWxUeXBlIjogImNvbnRhaW5lciIsICJlbGVtZW50cyI6IFt7ImlkIjogImYyIiwgImVsVHlwZSI6ICJ3aWRnZXQiLCAid2lkZ2V0VHlwZSI6ICJzdXBlcnF1ZXN0LXF1ZXN0IiwgInNldHRpbmdzIjogeyJxdWVzdF9pZCI6ICIiLCAicXVlc3RfaWRfbWFudWFsIjogIm1hbnVhbC00MiJ9fV19XQ==' ) ) ); echo 'elementor-manual-page=' . $id . PHP_EOL;\""
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp eval \"$id = wp_insert_post( array( 'post_title' => 'Elementor mention decoy', 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'elementor-mention' ) ); update_post_meta( $id, '_elementor_edit_mode', 'builder' ); update_post_meta( $id, '_elementor_template_type', 'wp-page' ); update_post_meta( $id, '_elementor_data', wp_slash( base64_decode( 'W3siaWQiOiAiZzEiLCAiZWxUeXBlIjogImNvbnRhaW5lciIsICJlbGVtZW50cyI6IFt7ImlkIjogImgyIiwgImVsVHlwZSI6ICJ3aWRnZXQiLCAid2lkZ2V0VHlwZSI6ICJ0ZXh0LWVkaXRvciIsICJzZXR0aW5ncyI6IHsiZWRpdG9yIjogIldlIHBsYWNlIHF1ZXN0cyB3aXRoIHRoZSBzdXBlcnF1ZXN0LXF1ZXN0IHdpZGdldC4ifX1dfV0=' ) ) ); echo 'elementor-mention=' . $id . PHP_EOL;\""
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp eval \"for ( $i = 1; $i <= 60; $i++ ) { wp_insert_post( array( 'post_title' => 'Bulk shortcode ' . $i, 'post_type' => 'page', 'post_status' => 'publish', 'post_content' => '[superquest id=bulk-' . $i . ']' ) ); } echo 'bulk=60' . PHP_EOL;\""
+    },
+    {
+      "step": "wp-cli",
       "command": "wp option update superquest_popup_quests '[{\"quest_id\":\"popup-1\",\"enabled\":true},{\"quest_id\":\"popup-2\",\"enabled\":false}]' --format=json"
     },
     {

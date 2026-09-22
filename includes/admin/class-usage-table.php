@@ -46,6 +46,7 @@ class Usage_Table extends WP_List_Table {
 			'title'  => __( 'Where', 'superquest' ),
 			'id'     => __( 'ID', 'superquest' ),
 			'type'   => __( 'Type', 'superquest' ),
+			'source' => __( 'Source', 'superquest' ),
 			'quests' => __( 'Quests', 'superquest' ),
 		);
 	}
@@ -66,6 +67,8 @@ class Usage_Table extends WP_List_Table {
 				return esc_html( (string) $item['id'] );
 			case 'type':
 				return esc_html( $this->type_label( $item['type'] ) );
+			case 'source':
+				return $this->render_sources( $item['quests'] );
 			case 'quests':
 				return $this->render_quests( $item['quests'] );
 			default:
@@ -119,9 +122,9 @@ class Usage_Table extends WP_List_Table {
 	}
 
 	/**
-	 * One line per block on the post.
+	 * One line per quest on the post.
 	 *
-	 * @param array<int, array<string, string>> $quests Blocks found.
+	 * @param array<int, array<string, string>> $quests Quests found.
 	 *
 	 * @return string
 	 */
@@ -144,6 +147,55 @@ class Usage_Table extends WP_List_Table {
 	}
 
 	/**
+	 * How each quest on the post was placed.
+	 *
+	 * One line per quest, so the lines sit level with the Quests column. A
+	 * post that places every quest the same way says so once, which is the
+	 * common case and keeps the column quiet.
+	 *
+	 * @param array<int, array<string, string>> $quests Quests found.
+	 *
+	 * @return string
+	 */
+	private function render_sources( array $quests ): string {
+		$sources = array();
+
+		foreach ( $quests as $quest ) {
+			$sources[] = $this->source_label( $quest['source'] ?? '' );
+		}
+
+		if ( array() === $sources ) {
+			return '';
+		}
+
+		if ( 1 === count( array_unique( $sources ) ) ) {
+			return esc_html( $sources[0] );
+		}
+
+		return implode( '<br>', array_map( 'esc_html', $sources ) );
+	}
+
+	/**
+	 * A readable name for an embed source.
+	 *
+	 * @param string $source Source slug.
+	 *
+	 * @return string
+	 */
+	private function source_label( string $source ): string {
+		switch ( $source ) {
+			case Scanner::SOURCE_BLOCK:
+				return __( 'Block', 'superquest' );
+			case Scanner::SOURCE_SHORTCODE:
+				return __( 'Shortcode', 'superquest' );
+			case Scanner::SOURCE_ELEMENTOR:
+				return __( 'Elementor', 'superquest' );
+			default:
+				return __( 'Unknown', 'superquest' );
+		}
+	}
+
+	/**
 	 * A readable name for a post type.
 	 *
 	 * @param string $type Post type slug.
@@ -155,6 +207,10 @@ class Usage_Table extends WP_List_Table {
 			return __( 'Synced pattern', 'superquest' );
 		}
 
+		if ( 'elementor_library' === $type ) {
+			return __( 'Elementor template', 'superquest' );
+		}
+
 		$object = get_post_type_object( $type );
 
 		return $object && isset( $object->labels->singular_name )
@@ -163,12 +219,12 @@ class Usage_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Message when the block is used nowhere.
+	 * Message when no quest is used anywhere.
 	 *
 	 * @return void
 	 */
 	public function no_items() {
-		esc_html_e( 'No SuperQuest blocks found.', 'superquest' );
+		esc_html_e( 'No quests found.', 'superquest' );
 	}
 
 	/**

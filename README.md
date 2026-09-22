@@ -1,6 +1,6 @@
 # SuperQuest for WordPress
 
-Embed [SuperQuest](https://jquest.fi) quests, quizzes and polls in WordPress with a block, or show them site-wide as a popup. This is the development repository; the plugin is distributed through the [WordPress.org plugin directory](https://wordpress.org/plugins/superquest/).
+Embed [SuperQuest](https://jquest.fi) quests, quizzes and polls in WordPress with a block, a shortcode or an Elementor widget, or show them site-wide as a popup. This is the development repository; the plugin is distributed through the [WordPress.org plugin directory](https://wordpress.org/plugins/superquest/).
 
 See `readme.txt` for the user-facing description, external-service disclosure and changelog.
 
@@ -34,7 +34,7 @@ pnpm playground   # local WordPress Playground at http://127.0.0.1:8881 with Plu
 
 ### Loader contract
 
-The class `jquest-app`, the `data-org-id`, `data-game-id`, `data-version`, `data-new-styles`, `data-locale` and `data-jq-load` attributes, the `window.__JQUEST_VERSION` global and the `files.jquest.fi` URLs are read by the external SuperQuest loader. They are not this plugin's to rename.
+The class `jquest-app`, the `data-org-id`, `data-game-id`, `data-version`, `data-locale` and `data-jq-load` attributes, the `window.__JQUEST_VERSION` global and the `files.jquest.fi` URLs are read by the external SuperQuest loader. They are not this plugin's to rename. `data-jq-load` takes `eager`, `hover` or `click`; the loader logs and ignores anything else.
 
 ### Hooks
 

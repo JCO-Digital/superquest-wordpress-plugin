@@ -115,17 +115,25 @@ final class Loader {
 	 * @return void
 	 */
 	public static function maybe_enqueue(): void {
-		$has_block = has_block( Block::NAME );
+		// Elementor shows a placeholder in its editor rather than the quest,
+		// so nothing there needs the loader. Without this the bundle would be
+		// fetched into the editor iframe on every reload, for a quest that is
+		// deliberately not being rendered.
+		if ( Elementor\Integration::is_editing() ) {
+			return;
+		}
+
+		$has_embed = Embed::in_post( get_post() );
 		$has_popup = array() !== Popup::active_ids();
 
-		if ( ! $has_block && ! $has_popup && ! Options::always_load() ) {
+		if ( ! $has_embed && ! $has_popup && ! Options::always_load() ) {
 			return;
 		}
 
 		// Only preload the bundle when a quest is known to be on the page. The
 		// always-load setting alone may never need it, and a megabyte of vendor
 		// code fetched for nothing would only slow the host page down.
-		self::enqueue( $has_block || $has_popup );
+		self::enqueue( $has_embed || $has_popup );
 	}
 
 	/**

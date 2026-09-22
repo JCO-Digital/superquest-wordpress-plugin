@@ -42,22 +42,22 @@ final class Block {
 	/**
 	 * Prints the block on the front end.
 	 *
-	 * The markup is the external loader's contract: it looks for `.jquest-app`
-	 * elements and reads `data-org-id`, `data-game-id`, `data-version` and
-	 * `data-new-styles`. These names come from the SuperQuest loader and cannot
-	 * be renamed here.
+	 * The attributes come from Embed, which every embed path shares, but they
+	 * go out through `get_block_wrapper_attributes()` so the block also picks
+	 * up the alignment and style classes the editor gives it.
 	 *
 	 * @param array<string, mixed> $attributes Block attributes.
 	 *
 	 * @return void
 	 */
 	public static function output( array $attributes ): void {
-		$quest_id     = isset( $attributes['questId'] ) && is_scalar( $attributes['questId'] )
-			? trim( (string) $attributes['questId'] )
+		$quest_id = isset( $attributes['questId'] ) && is_scalar( $attributes['questId'] )
+			? (string) $attributes['questId']
 			: '';
-		$organization = Options::organization_id();
 
-		if ( '' === $quest_id || '' === $organization ) {
+		$embed = Embed::attributes( $quest_id );
+
+		if ( array() === $embed ) {
 			return;
 		}
 
@@ -67,17 +67,7 @@ final class Block {
 		// instead; it waits for DOMContentLoaded, so that still works.
 		Loader::enqueue();
 
-		$wrapper = get_block_wrapper_attributes(
-			array(
-				'class'           => 'jquest-app',
-				'data-org-id'     => $organization,
-				'data-game-id'    => $quest_id,
-				'data-version'    => Loader::SCRIPT_VERSION,
-				'data-new-styles' => 'true',
-			)
-		);
-
 		// get_block_wrapper_attributes() escapes every attribute it returns.
-		echo '<div ' . $wrapper . '></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<div ' . get_block_wrapper_attributes( $embed ) . '></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
