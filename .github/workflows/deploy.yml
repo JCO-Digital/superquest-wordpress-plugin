@@ -1,9 +1,12 @@
-name: Deploy to WordPress.org
+name: Deploy
 
 on:
   push:
     tags:
       - "v*"
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
@@ -32,3 +35,15 @@ jobs:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: superquest
           ASSETS_DIR: .wordpress-org
+
+      - name: Build plugin ZIP
+        run: |
+          mkdir -p dist/superquest
+          rsync -a --exclude-from=.distignore --exclude=dist ./ dist/superquest/
+          cd dist && zip -r ../superquest.zip superquest/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: superquest.zip
+          generate_release_notes: true
