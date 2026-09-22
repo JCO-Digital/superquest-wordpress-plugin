@@ -4,7 +4,7 @@ Tags: quiz, gamification, learning, survey, poll, wheel-of-fortune
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.0.3
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,24 +92,31 @@ The plugin itself does not. The SuperQuest application loaded from files.jquest.
 
 == Changelog ==
 
-= 1.0.3 (2026-09-21) =
+= 1.1.0 (2026-09-22) =
 
-* Maintenance: config: configure changelog generation in foonver (4073a66)
+* Feature: embed - add shortcode and Elementor widget support
+* CI: github - add workflow step to create GitHub release
+* Maintenance: config - ignore foonver.toml in distribution
+* Maintenance: wordpress - add plugin branding assets
+
+= v1.0.3 (2026-09-21) =
+
+* Maintenance: config - configure changelog generation in foonver
 
 = v1.0.2 (2026-09-21) =
 
-* Documentation: readme: update plugin domain and tags (9694a28)
+* Documentation: readme - update plugin domain and tags
 
 = v1.0.1 (2026-09-21) =
 
-* Feature: quest: redesign block editor UI and improve quest selection experience (4420369)
-* Feature: plugin: add SuperQuest integration for WordPress (d856981)
-* Fix: plugin: update plugin URI to superquest.fi (bd8e665)
-* Fix: quests: increase API request timeout (aa763ce)
-* Refactor: quest: replace custom card with WordPress placeholder (13afddf)
-* Documentation: readme: update terms and privacy policy URLs (c0a2d53)
-* CI: github: nest distribution build directory for plugin check (fd924d1)
-* Maintenance: config: add foonver configuration file (48e723c)
-* Maintenance: wordpress: add plugin branding assets (140b3c7)
-* Maintenance: quest: update block description and formatting (78a8cc4)
-* Maintenance: includes: rename PHP classes to follow WordPress coding standards (61a3ff4)
+* Feature: quest - redesign block editor UI and improve quest selection experience
+* Feature: plugin - add SuperQuest integration for WordPress
+* Fix: plugin - update plugin URI to superquest.fi
+* Fix: quests - increase API request timeout
+* Refactor: quest - replace custom card with WordPress placeholder
+* Documentation: readme - update terms and privacy policy URLs
+* CI: github - nest distribution build directory for plugin check
+* Maintenance: config - add foonver configuration file
+* Maintenance: wordpress - add plugin branding assets
+* Maintenance: quest - update block description and formatting
+* Maintenance: includes - rename PHP classes to follow WordPress coding standards
