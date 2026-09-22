@@ -4,7 +4,7 @@ Tags: quiz, gamification, learning, survey, poll, wheel-of-fortune
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,7 +92,11 @@ The plugin itself does not. The SuperQuest application loaded from files.jquest.
 
 == Changelog ==
 
-= 1.1.0 (2026-09-22) =
+= 1.1.1 (2026-09-22) =
+
+* CI: github - replace workflow actions with unified release pipeline
+
+= v1.1.0 (2026-09-22) =
 
 * Feature: embed - add shortcode and Elementor widget support
 * CI: github - add workflow step to create GitHub release
