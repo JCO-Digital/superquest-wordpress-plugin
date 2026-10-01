@@ -14,7 +14,7 @@ Embed SuperQuest quests, quizzes and polls with a block, a shortcode or an Eleme
 
 SuperQuest is a service for building gamified quests: quizzes, surveys, polls, ratings and other interactive content. This plugin connects a WordPress site to your SuperQuest organisation so its quests can be placed anywhere in your content.
 
-A SuperQuest account is required. Quests are created and edited in the SuperQuest dashboard, not in WordPress.
+A SuperQuest account is required. Quests are created and edited in the SuperQuest dashboard, not in WordPress. You can try it free https://app.superquest.ai/register
 
 = Features =
 
@@ -38,11 +38,11 @@ On pages that hold a quest â€” as a block, a shortcode or an Elementor widget â€
 
 The loader is loaded after cookie consent by default when a consent manager blocks it. Site owners can opt in to marking it as essential for Cookiebot, OneTrust and CookieYes on the Popup screen.
 
-**Dashboard link (dashboard.jquest.fi)**
+**Dashboard link (https://app.superquest.ai/)**
 The block offers editors a link to open the selected quest in the SuperQuest dashboard. Following the link is up to the editor; nothing is sent automatically.
 
-Terms of use: https://superquest.staging.bojaco.com/en/terms-of-use/
-Privacy policy: https://superquest.staging.bojaco.com/en/privacy-policy/
+Terms of use: https://superquest.ai/terms-of-use/
+Privacy policy: https://superquest.ai/privacy-policy/
 
 = Source code =
 
