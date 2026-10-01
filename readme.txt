@@ -1,6 +1,6 @@
 === SuperQuest ===
 Contributors: jcodigital
-Tags: quiz, gamification, learning, survey, poll, wheel-of-fortune
+Tags: game, product-finder, quiz, wheel-of-fortune, personality-test
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
