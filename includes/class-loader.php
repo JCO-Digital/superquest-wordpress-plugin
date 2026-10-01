@@ -74,7 +74,9 @@ final class Loader {
 		add_filter( 'wp_inline_script_attributes', array( self::class, 'inline_script_attributes' ) );
 		add_filter( 'wp_resource_hints', array( self::class, 'resource_hints' ), 10, 2 );
 		add_filter( 'wp_preload_resources', array( self::class, 'preload_resources' ) );
-		add_action( 'wp_head', array( self::class, 'print_module_preloads' ), 3 );
+		// After core's import map (priority 10), wherever core prints it.
+		add_action( 'wp_head', array( self::class, 'print_module_preloads' ), 11 );
+		add_action( 'wp_footer', array( self::class, 'print_module_preloads' ), 11 );
 	}
 
 	/**
@@ -251,10 +253,15 @@ final class Loader {
 	 * round trip instead of manifest, then entry, then vendors. Core has no
 	 * API for modulepreload, so the links are printed here.
 	 *
+	 * They must follow core's import map: Firefox ignores an import map that
+	 * comes after a module preload, which breaks every other script module on
+	 * the page. Core prints the map in the head for block themes and in the
+	 * footer for classic themes, so the links follow it there.
+	 *
 	 * @return void
 	 */
 	public static function print_module_preloads(): void {
-		if ( ! self::$preload ) {
+		if ( ! self::$preload || doing_action( 'wp_head' ) !== wp_is_block_theme() ) {
 			return;
 		}
 
