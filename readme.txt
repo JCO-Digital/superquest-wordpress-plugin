@@ -1,6 +1,6 @@
 === SuperQuest ===
 Contributors: jcodigital
-Tags: quiz, gamification, learning, survey, poll, wheel-of-fortune
+Tags: game, product-finder, quiz, wheel-of-fortune, personality-test
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
@@ -8,13 +8,14 @@ Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Embed SuperQuest quests, quizzes and polls with a block, a shortcode or an Elementor widget, or show them site-wide as a popup.
+Embed SuperQuest content with a block, a shortcode or an Elementor widget, or show them site-wide as a popup.
 
 == Description ==
+SuperQuest is a platform for creating, publishing and managing interactive experiences such as product choosers, calculators, surveys, quizzes and various game formats. Turn passive visitors into active participants and help them engage and take action.
 
-SuperQuest is a service for building gamified quests: quizzes, surveys, polls, ratings and other interactive content. This plugin connects a WordPress site to your SuperQuest organisation so its quests can be placed anywhere in your content.
+This plugin connects a WordPress site to your SuperQuest organisation so its quests can be placed anywhere in your content.
 
-A SuperQuest account is required. Quests are created and edited in the SuperQuest dashboard, not in WordPress.
+A SuperQuest account is required. Quests are created and edited in the SuperQuest dashboard, not in WordPress. You can get started for free at: https://app.superquest.ai/register
 
 = Features =
 
@@ -38,11 +39,11 @@ On pages that hold a quest â€” as a block, a shortcode or an Elementor widget â€
 
 The loader is loaded after cookie consent by default when a consent manager blocks it. Site owners can opt in to marking it as essential for Cookiebot, OneTrust and CookieYes on the Popup screen.
 
-**Dashboard link (dashboard.jquest.fi)**
+**Dashboard link (https://app.superquest.ai/)**
 The block offers editors a link to open the selected quest in the SuperQuest dashboard. Following the link is up to the editor; nothing is sent automatically.
 
-Terms of use: https://superquest.staging.bojaco.com/en/terms-of-use/
-Privacy policy: https://superquest.staging.bojaco.com/en/privacy-policy/
+Terms of use: https://superquest.ai/terms-of-use/
+Privacy policy: https://superquest.ai/privacy-policy/
 
 = Source code =
 
