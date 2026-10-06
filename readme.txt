@@ -4,7 +4,7 @@ Tags: game, product-finder, quiz, wheel-of-fortune, personality-test
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,7 +93,14 @@ The plugin itself does not. The SuperQuest application loaded from files.jquest.
 
 == Changelog ==
 
-= 1.1.1 (2026-09-22) =
+= 1.1.2 (2026-10-06) =
+
+* Fix: loader - print module preloads after the import map
+* Update readme.txt
+* Update readme.txt
+* Update readme.txt
+
+= v1.1.1 (2026-09-22) =
 
 * CI: github - replace workflow actions with unified release pipeline
 
