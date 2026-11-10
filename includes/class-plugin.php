@@ -49,12 +49,14 @@ final class Plugin {
 		Shortcode::register();
 		Loader::register();
 		Popup::register();
+		Menu_Items::register();
 		Elementor\Integration::register();
 
 		add_action( 'rest_api_init', array( $this, 'register_rest_routes' ) );
 
 		if ( is_admin() ) {
 			Admin\Menu::register();
+			Admin\Nav_Menu::register();
 			add_filter( 'plugin_action_links_' . plugin_basename( SUPERQUEST_FILE ), array( $this, 'action_links' ) );
 		}
 	}

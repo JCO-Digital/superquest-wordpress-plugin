@@ -480,3 +480,39 @@ msgstr ""
 msgctxt "block keyword"
 msgid "game"
 msgstr ""
+
+#: views/admin/nav-menu.php:25
+msgid "No popup quests are set up yet."
+msgstr ""
+
+#: views/admin/nav-menu.php:26
+msgid "Add one on the Popup screen."
+msgstr ""
+
+#: views/admin/nav-menu.php:51
+msgid "(not inserted on the site)"
+msgstr ""
+
+#: views/admin/nav-menu.php:62
+msgid "Menu items for a quest are only shown on pages where that popup quest is inserted."
+msgstr ""
+
+#: views/admin/nav-menu.php:68
+msgid "Select All"
+msgstr ""
+
+#: views/admin/nav-menu.php:71
+msgid "Add to Menu"
+msgstr ""
+
+#: views/admin/popup-quests-field.php
+msgid "None of the organisation's quests are in popup mode. Set a quest's launch mode to Popup in SuperQuest, then refresh the quest list."
+msgstr ""
+
+#: views/admin/popup-quests-field.php
+msgid "This quest is set to inline mode in SuperQuest, so it shows in the page instead of as a popup. Switch it to Popup in SuperQuest, or remove the entry."
+msgstr ""
+
+#: includes/rest/class-quests-controller.php
+msgid "How the quest launches: inline, popup, or empty when unknown."
+msgstr ""

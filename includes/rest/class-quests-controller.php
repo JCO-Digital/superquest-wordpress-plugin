@@ -154,8 +154,13 @@ class Quests_Controller extends WP_REST_Controller {
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
-							'id'    => array( 'type' => 'string' ),
-							'title' => array( 'type' => 'string' ),
+							'id'          => array( 'type' => 'string' ),
+							'title'       => array( 'type' => 'string' ),
+							'launch_mode' => array(
+								'description' => __( 'How the quest launches: inline, popup, or empty when unknown.', 'superquest' ),
+								'type'        => 'string',
+								'enum'        => array( Quests::MODE_INLINE, Quests::MODE_POPUP, Quests::MODE_UNKNOWN ),
+							),
 						),
 					),
 				),

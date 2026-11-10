@@ -7,6 +7,9 @@
  * the sanitiser drops entries without a quest. Rows are removed by ticking
  * their remove box.
  *
+ * Only quests that can run as a popup are offered: quests the API reports as
+ * inline are left out, while quests of unknown mode stay in.
+ *
  * @package SuperQuest
  */
 
@@ -17,8 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$superquest_available = Quests::items();
-$superquest_known_ids = array_column( $superquest_available, 'id' );
+$superquest_all       = Quests::items();
+$superquest_available = Quests::popup_items();
+$superquest_known_ids = array_column( $superquest_all, 'id' );
+$superquest_titles    = Quests::titles();
 $superquest_entries   = Options::popup_quests();
 $superquest_entries[] = array(
 	'quest_id' => '',
@@ -26,10 +31,16 @@ $superquest_entries[] = array(
 );
 $superquest_last      = count( $superquest_entries ) - 1;
 
-if ( array() === $superquest_available ) :
+if ( array() === $superquest_all ) :
 	?>
 	<p class="description">
 		<?php esc_html_e( 'No quests are available yet. Set an Organisation ID on the General screen first.', 'superquest' ); ?>
+	</p>
+	<?php
+elseif ( array() === $superquest_available ) :
+	?>
+	<p class="description">
+		<?php esc_html_e( 'None of the organisation\'s quests are in popup mode. Set a quest\'s launch mode to Popup in SuperQuest, then refresh the quest list.', 'superquest' ); ?>
 	</p>
 	<?php
 endif;
@@ -39,6 +50,7 @@ foreach ( $superquest_entries as $superquest_index => $superquest_entry ) :
 	$superquest_name   = Options::POPUP_QUESTS . '[' . $superquest_index . ']';
 	$superquest_id     = 'superquest-popup-quest-' . $superquest_index;
 	$superquest_stale  = ! $superquest_is_new && ! in_array( $superquest_entry['quest_id'], $superquest_known_ids, true );
+	$superquest_inline = ! $superquest_is_new && ! $superquest_stale && Quests::is_inline( $superquest_entry['quest_id'] );
 	?>
 	<fieldset class="superquest-quest-entry<?php echo $superquest_is_new ? ' superquest-quest-entry--new' : ''; ?>">
 		<legend>
@@ -61,9 +73,12 @@ foreach ( $superquest_entries as $superquest_index => $superquest_entry ) :
 						<?php echo esc_html( '' !== $superquest_quest['title'] ? $superquest_quest['title'] : $superquest_quest['id'] ); ?>
 					</option>
 				<?php endforeach; ?>
-				<?php if ( $superquest_stale ) : ?>
+				<?php if ( $superquest_stale || $superquest_inline ) : ?>
 					<option value="<?php echo esc_attr( $superquest_entry['quest_id'] ); ?>" selected>
-						<?php echo esc_html( $superquest_entry['quest_id'] ); ?>
+						<?php
+						$superquest_label = $superquest_titles[ $superquest_entry['quest_id'] ] ?? '';
+						echo esc_html( '' !== $superquest_label ? $superquest_label : $superquest_entry['quest_id'] );
+						?>
 					</option>
 				<?php endif; ?>
 			</select>
@@ -71,6 +86,10 @@ foreach ( $superquest_entries as $superquest_index => $superquest_entry ) :
 		<?php if ( $superquest_stale ) : ?>
 			<p class="description superquest-warning">
 				<?php esc_html_e( 'This quest is no longer in the fetched quest list. Pick another one or remove the entry.', 'superquest' ); ?>
+			</p>
+		<?php elseif ( $superquest_inline ) : ?>
+			<p class="description superquest-warning">
+				<?php esc_html_e( 'This quest is set to inline mode in SuperQuest, so it shows in the page instead of as a popup. Switch it to Popup in SuperQuest, or remove the entry.', 'superquest' ); ?>
 			</p>
 		<?php endif; ?>
 

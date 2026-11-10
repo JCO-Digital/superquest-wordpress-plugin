@@ -41,6 +41,22 @@ final class Quests {
 	private const LOCK_TTL = 30;
 
 	/**
+	 * Launch mode of a quest shown inline in the page.
+	 */
+	public const MODE_INLINE = 'inline';
+
+	/**
+	 * Launch mode of a quest opened as a popup.
+	 */
+	public const MODE_POPUP = 'popup';
+
+	/**
+	 * Launch mode when the API did not say: a list fetched before the API sent
+	 * one, or a value this plugin does not know.
+	 */
+	public const MODE_UNKNOWN = '';
+
+	/**
 	 * Hooks the cache to the organisation setting.
 	 *
 	 * @return void
@@ -167,7 +183,7 @@ final class Quests {
 	/**
 	 * The cached quests.
 	 *
-	 * @return array<int, array{id: string, title: string}>
+	 * @return array<int, array{id: string, title: string, launch_mode: string}>
 	 */
 	public static function items(): array {
 		return self::cache()['items'];
@@ -185,6 +201,41 @@ final class Quests {
 		}
 
 		return $titles;
+	}
+
+	/**
+	 * The cached quests that can run as a popup: those in popup mode and
+	 * those whose mode is unknown. Only quests known to be inline are left out.
+	 *
+	 * @return array<int, array{id: string, title: string, launch_mode: string}>
+	 */
+	public static function popup_items(): array {
+		return array_values(
+			array_filter(
+				self::items(),
+				static function ( array $quest ): bool {
+					return self::MODE_INLINE !== $quest['launch_mode'];
+				}
+			)
+		);
+	}
+
+	/**
+	 * Whether a quest is known to be in inline mode. False for quests in popup
+	 * mode, of unknown mode, or missing from the list.
+	 *
+	 * @param string $quest_id Quest ID.
+	 *
+	 * @return bool
+	 */
+	public static function is_inline( string $quest_id ): bool {
+		foreach ( self::items() as $quest ) {
+			if ( $quest['id'] === $quest_id ) {
+				return self::MODE_INLINE === $quest['launch_mode'];
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -218,7 +269,7 @@ final class Quests {
 	/**
 	 * Reads the cache in a predictable shape.
 	 *
-	 * @return array{items: array<int, array{id: string, title: string}>, message: string, updated: int}
+	 * @return array{items: array<int, array{id: string, title: string, launch_mode: string}>, message: string, updated: int}
 	 */
 	private static function cache(): array {
 		$stored = get_option( Options::QUESTS, array() );
@@ -235,8 +286,8 @@ final class Quests {
 	 * Writes the cache. The option is not autoloaded: it is only read in the
 	 * admin and by the popup settings.
 	 *
-	 * @param array<int, array{id: string, title: string}> $items   Quests.
-	 * @param string                                       $message API message.
+	 * @param array<int, array{id: string, title: string, launch_mode: string}> $items   Quests.
+	 * @param string                                                            $message API message.
 	 *
 	 * @return void
 	 */
@@ -257,11 +308,14 @@ final class Quests {
 
 	/**
 	 * Reduces whatever the API (or an old cache) holds to a list of quests with
-	 * a string ID and title, dropping anything else.
+	 * a string ID, title and launch mode, dropping anything else.
+	 *
+	 * The API sends the mode as `launchMode`; the cache stores it as
+	 * `launch_mode`. Either may be missing, which reads as unknown.
 	 *
 	 * @param mixed $quests Raw quest collection.
 	 *
-	 * @return array<int, array{id: string, title: string}>
+	 * @return array<int, array{id: string, title: string, launch_mode: string}>
 	 */
 	private static function normalize( $quests ): array {
 		if ( ! is_array( $quests ) ) {
@@ -281,13 +335,31 @@ final class Quests {
 			}
 
 			$normalized[] = array(
-				'id'    => $id,
-				'title' => isset( $quest['title'] ) && is_scalar( $quest['title'] )
+				'id'          => $id,
+				'title'       => isset( $quest['title'] ) && is_scalar( $quest['title'] )
 					? sanitize_text_field( (string) $quest['title'] )
 					: '',
+				'launch_mode' => self::normalize_launch_mode( $quest['launch_mode'] ?? $quest['launchMode'] ?? null ),
 			);
 		}
 
 		return $normalized;
+	}
+
+	/**
+	 * Reduces a raw launch mode to one of the MODE_ constants.
+	 *
+	 * @param mixed $mode Raw launch mode.
+	 *
+	 * @return string
+	 */
+	private static function normalize_launch_mode( $mode ): string {
+		if ( ! is_string( $mode ) ) {
+			return self::MODE_UNKNOWN;
+		}
+
+		$mode = strtolower( trim( $mode ) );
+
+		return in_array( $mode, array( self::MODE_INLINE, self::MODE_POPUP ), true ) ? $mode : self::MODE_UNKNOWN;
 	}
 }
