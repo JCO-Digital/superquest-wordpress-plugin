@@ -50,6 +50,7 @@ final class Plugin {
 		Loader::register();
 		Popup::register();
 		Menu_Items::register();
+		Button::register();
 		Elementor\Integration::register();
 
 		add_action( 'rest_api_init', array( $this, 'register_rest_routes' ) );

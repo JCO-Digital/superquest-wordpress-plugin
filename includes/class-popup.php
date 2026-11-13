@@ -28,6 +28,52 @@ final class Popup {
 	}
 
 	/**
+	 * Hash prefix of a link opening a popup quest. The SuperQuest loader opens
+	 * the popup for `#superquest-ID`, or every popup quest for a bare
+	 * `#superquest`.
+	 */
+	public const LINK_PREFIX = 'superquest';
+
+	/**
+	 * The link URL opening a quest's popup.
+	 *
+	 * @param string $quest_id Quest ID.
+	 *
+	 * @return string
+	 */
+	public static function link_url( string $quest_id ): string {
+		return '#' . self::LINK_PREFIX . '-' . rawurlencode( $quest_id );
+	}
+
+	/**
+	 * The quest a link URL opens: the quest ID, an empty string for the bare
+	 * `#superquest` (every popup quest), or null for any other URL.
+	 *
+	 * @param string $url Link URL.
+	 *
+	 * @return string|null
+	 */
+	public static function link_quest_id( string $url ): ?string {
+		$fragment = wp_parse_url( $url, PHP_URL_FRAGMENT );
+		if ( ! is_string( $fragment ) ) {
+			return null;
+		}
+
+		if ( self::LINK_PREFIX === $fragment ) {
+			return '';
+		}
+
+		$prefix = self::LINK_PREFIX . '-';
+		if ( ! str_starts_with( $fragment, $prefix ) ) {
+			return null;
+		}
+
+		$quest_id = rawurldecode( substr( $fragment, strlen( $prefix ) ) );
+
+		return '' !== $quest_id ? $quest_id : null;
+	}
+
+	/**
 	 * The quest IDs to insert on the page being rendered.
 	 *
 	 * @return string[]

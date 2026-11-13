@@ -68,17 +68,6 @@ final class Nav_Menu {
 	}
 
 	/**
-	 * The menu item URL opening a quest's popup.
-	 *
-	 * @param string $quest_id Quest ID.
-	 *
-	 * @return string
-	 */
-	public static function quest_url( string $quest_id ): string {
-		return '#superquest-' . rawurlencode( $quest_id );
-	}
-
-	/**
 	 * Renders the meta box.
 	 *
 	 * @return void

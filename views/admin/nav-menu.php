@@ -9,8 +9,8 @@
  */
 
 use SuperQuest\Admin\Menu;
-use SuperQuest\Admin\Nav_Menu;
 use SuperQuest\Options;
+use SuperQuest\Popup;
 use SuperQuest\Quests;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -60,7 +60,7 @@ endif;
 					</label>
 					<input type="hidden" class="menu-item-type" name="<?php echo esc_attr( $superquest_name . '[menu-item-type]' ); ?>" value="custom">
 					<input type="hidden" class="menu-item-title" name="<?php echo esc_attr( $superquest_name . '[menu-item-title]' ); ?>" value="<?php echo esc_attr( $superquest_title ); ?>">
-					<input type="hidden" class="menu-item-url" name="<?php echo esc_attr( $superquest_name . '[menu-item-url]' ); ?>" value="<?php echo esc_attr( Nav_Menu::quest_url( $superquest_id ) ); ?>">
+					<input type="hidden" class="menu-item-url" name="<?php echo esc_attr( $superquest_name . '[menu-item-url]' ); ?>" value="<?php echo esc_attr( Popup::link_url( $superquest_id ) ); ?>">
 				</li>
 			<?php endforeach; ?>
 		</ul>

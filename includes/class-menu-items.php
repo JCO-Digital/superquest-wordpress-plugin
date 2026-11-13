@@ -69,7 +69,7 @@ final class Menu_Items {
 	}
 
 	/**
-	 * The quest a menu item opens, as quest_id() reports it, or null when the
+	 * The quest a menu item opens, as Popup::link_quest_id() reports it, or null when the
 	 * item is not a custom link to a quest.
 	 *
 	 * @param object $item Menu item.
@@ -81,34 +81,7 @@ final class Menu_Items {
 			return null;
 		}
 
-		return self::quest_id( (string) ( $item->url ?? '' ) );
-	}
-
-	/**
-	 * The quest a menu item URL opens: the quest ID, an empty string for the
-	 * bare `#superquest` (every popup quest), or null for any other URL.
-	 *
-	 * @param string $url Menu item URL.
-	 *
-	 * @return string|null
-	 */
-	public static function quest_id( string $url ): ?string {
-		$fragment = wp_parse_url( $url, PHP_URL_FRAGMENT );
-		if ( ! is_string( $fragment ) ) {
-			return null;
-		}
-
-		if ( 'superquest' === $fragment ) {
-			return '';
-		}
-
-		if ( ! str_starts_with( $fragment, 'superquest-' ) ) {
-			return null;
-		}
-
-		$quest_id = rawurldecode( substr( $fragment, strlen( 'superquest-' ) ) );
-
-		return '' !== $quest_id ? $quest_id : null;
+		return Popup::link_quest_id( (string) ( $item->url ?? '' ) );
 	}
 
 	/**
