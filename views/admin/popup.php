@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<span class="superquest-logo" role="img" aria-label="SuperQuest"></span>
 		<h1><?php esc_html_e( 'Popup', 'superquest' ); ?></h1>
 	</div>
+	<hr class="wp-header-end">
 
 	<?php settings_errors(); ?>
 

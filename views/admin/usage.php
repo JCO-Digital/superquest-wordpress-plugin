@@ -20,6 +20,7 @@ $superquest_table->prepare_items();
 		<span class="superquest-logo" role="img" aria-label="SuperQuest"></span>
 		<h1><?php esc_html_e( 'Usage', 'superquest' ); ?></h1>
 	</div>
+	<hr class="wp-header-end">
 
 	<div class="superquest-card">
 		<p class="description">
